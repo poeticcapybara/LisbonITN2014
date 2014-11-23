@@ -54,3 +54,10 @@ docs/_build/
 target/
 
 *.ipynb_checkpoints/
+
+# Big files
+*.bz2
+*.xml
+*.gz
+*.tsv
+*.csv

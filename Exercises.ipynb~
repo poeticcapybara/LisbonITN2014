@@ -1,0 +1,76 @@
+{
+ "metadata": {
+  "name": "",
+  "signature": "sha256:cc7e21ee065b92ce70ba41965515a759ba42486d3575cc283c129b65d2fae675"
+ },
+ "nbformat": 3,
+ "nbformat_minor": 0,
+ "worksheets": [
+  {
+   "cells": [
+    {
+     "cell_type": "heading",
+     "level": 1,
+     "metadata": {},
+     "source": [
+      "Exercises:"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "- [IPython]() ([NBViewer version]())\n",
+      "    - []()\n",
+      "- [Matplotlib]() ([NBViewer version]())\n",
+      "    - []()\n",
+      "\n",
+      "- [NumPy]() ([NBViewer version]())\n",
+      "    - []()\n",
+      "- [SciPy]() ([NBViewer version]())\n",
+      "    - [Special Functions]()\n",
+      "    - [Sparse]()\n",
+      "- [Pandas]() ([NBViewer version]())\n",
+      "- [ODE]() ([NBViewer version]())\n",
+      "- [Lorenz]() ([NBViewer version]())\n",
+      "- [HestonModel]() ([NBViewer version]())\n",
+      "- [Heat Equation]() ([NBViewer version]())\n",
+      "- [Reduced Heat Equation]() ([NBViewer version]())\n",
+      "- [Non-linear]() ([NBViewer version]())\n",
+      "- [Benchmarking]() ([NBViewer version]())\n",
+      "- [TimeSeries]() ([NBViewer version]())\n",
+      "- [Financial TimeSeries]() ([NBViewer version]())\n",
+      "- [Parallelization]()\n",
+      "    - [IPCluster]()\n",
+      "    - [Multiprocessing]()\n",
+      "    - [MPI]()\n",
+      "    - [pyCUDA]()"
+     ]
+    },
+    {
+     "cell_type": "heading",
+     "level": 3,
+     "metadata": {},
+     "source": [
+      "NumPy"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "Most were taken from https://github.com/rougier/numpy-100"
+     ]
+    },
+    
+    {
+     "cell_type": "heading",
+     "level": 2,
+     "metadata": {},
+     "source": [
+      "Archmaster"
+     ]
+    },
+  }
+ ]
+}

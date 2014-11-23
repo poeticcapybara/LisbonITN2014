@@ -53,4 +53,10 @@ docs/_build/
 # PyBuilder
 target/
 
-.ipynb*
+*.ipynb_checkpoints/
+
+# Big files
+*.bz2
+*.xml
+*.gz
+*.tsv
