@@ -1,0 +1,31 @@
+#
+# Build a PDF with all the notebooks 
+#
+TEMPLATE=chapter
+NOTEBOOK_DIR=notebooks/
+NOTEBOOKS=notebooks/0-Introduction.ipynb notebooks/Syllabus.ipynb\
+          notebooks/I-Python.ipynb notebooks/I.II-Iterables.ipynb\
+          notebooks/II-IPython.ipynb notebooks/III-Numpy.ipynb notebooks/IV-SciPy.ipynb\
+          notebooks/V-Matplotlib.ipynb notebooks/VI-Pandas.ipynb\
+	  notebooks/VII-Tips-and-Tricks.ipynb notebooks/VIII-Benchmarks.ipynb\
+	  notebooks/IX-Randomness.ipynb notebooks/X-FFT.ipynb
+
+LATEXFILES=$(NOTEBOOKS:.ipynb=.tex)
+
+.ipynb.tex:
+	ipython nbconvert --to latex --template $(TEMPLATE) $<
+
+#all: $(LATEXFILES) buildpdf
+all: latexfiles buildpdf
+
+latexfiles:
+	ipython nbconvert --to latex --template $(TEMPLATE) $(NOTEBOOK_DIR)0-Introduction.ipynb $(NOTEBOOK_DIR)Syllabus.ipynb
+	ipython nbconvert --to latex --template $(TEMPLATE) I-Python.ipynb I.II-Iterables.ipynb
+	ipython nbconvert --to latex --template $(TEMPLATE) II-IPython.ipynb III-Numpy.ipynb IV-SciPy.ipynb
+	ipython nbconvert --to latex --template $(TEMPLATE) V-Matplotlib.ipynb VI-Pandas.ipynb
+	ipython nbconvert --to latex --template $(TEMPLATE) VII-Tips-and-Tricks.ipynb VIII-Benchmarks.ipynb
+	ipython nbconvert --to latex --template $(TEMPLATE) IX-Randomness.ipynb X-FFT.ipynb
+
+buildpdf: latexfiles
+	pdflatex PFF-Introduction-ISEG2014.tex
+    

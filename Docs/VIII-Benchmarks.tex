@@ -1,0 +1,1120 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{VIII-Benchmarks}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    
+
+    \section{VIII-Benchmarks}\label{viii-benchmarks}
+
+    \emph{The first benchmark in this notebook first appeared as a}
+\href{http://jakevdp.github.io/blog/2012/08/24/numba-vs-cython/}{\emph{post}}
+\emph{by Jake Vanderplas on the blog}
+\href{http://jakevdp.github.io}{\emph{Pythonic Perambulations}}
+
+    \subsubsection{Index}\label{index}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \hyperref[Pairwise-Distance]{Pairwise Distance}
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    \hyperref[Numpy-broadcasting]{NumPy Broadcasting}
+  \item
+    \hyperref[Pure-python]{Pure Python}
+  \item
+    \hyperref[Numba]{Numba}
+  \item
+    \hyperref[Cython]{Cython}
+  \item
+    \hyperref[Parakeet]{Parakeet}
+  \item
+    \hyperref[Fortran-f2py]{Fortran/F2Py}
+  \item
+    \hyperref[Scipy-pairwise-distances]{SciPy Euclidean Distance}
+  \item
+    \hyperref[Scikitlearn-pairwise-distances]{Scikit-learn Distance}
+  \end{itemize}
+\item
+  \hyperref[1Dux5cux2520Black-Scholes]{1D Black-Scholes}
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    \hyperref[1DBS-PurePython]{Pure Python}
+  \item
+    \hyperref[1DBS-Numba]{Numba}
+  \item
+    \hyperref[1DBS-Cython]{Cython}
+  \item
+    \hyperref[1DBS-MATLAB]{Matlab}
+  \end{itemize}
+\end{itemize}
+
+    
+
+
+    \subsection{Pairwise distance}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib} \PY{k+kn}{as} \PY{n+nn}{mpl}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+        \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1000}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{s}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ }\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{]}
+        \PY{n}{Benchs} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{python}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{loop}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{numpy}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{broadc.}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{sklearn}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{fortran/}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{f2py}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{scipy}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{cython}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{numba}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{parakeet}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{Benchmarks} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{p}{(}\PY{n}{bench}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{)} \PY{k}{for} \PY{n}{bench} \PY{o+ow}{in} \PY{n}{Benchs}\PY{p}{)}
+\end{Verbatim}
+
+    We'll start by defining the array which we'll use for the benchmarks:
+one thousand points in three dimensions.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{np}\PY{o}{.}\PY{n}{show\PYZus{}config}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+lapack\_opt\_info:
+    libraries = ['mkl\_lapack95\_lp64', 'mkl\_intel\_lp64', 'mkl\_intel\_thread', 'mkl\_core', 'iomp5', 'pthread']
+    library\_dirs = ['/home/jpsilva/anaconda/lib']
+    define\_macros = [('SCIPY\_MKL\_H', None)]
+    include\_dirs = ['/home/jpsilva/anaconda/include']
+blas\_opt\_info:
+    libraries = ['mkl\_intel\_lp64', 'mkl\_intel\_thread', 'mkl\_core', 'iomp5', 'pthread']
+    library\_dirs = ['/home/jpsilva/anaconda/lib']
+    define\_macros = [('SCIPY\_MKL\_H', None)]
+    include\_dirs = ['/home/jpsilva/anaconda/include']
+openblas\_lapack\_info:
+  NOT AVAILABLE
+lapack\_mkl\_info:
+    libraries = ['mkl\_lapack95\_lp64', 'mkl\_intel\_lp64', 'mkl\_intel\_thread', 'mkl\_core', 'iomp5', 'pthread']
+    library\_dirs = ['/home/jpsilva/anaconda/lib']
+    define\_macros = [('SCIPY\_MKL\_H', None)]
+    include\_dirs = ['/home/jpsilva/anaconda/include']
+blas\_mkl\_info:
+    libraries = ['mkl\_intel\_lp64', 'mkl\_intel\_thread', 'mkl\_core', 'iomp5', 'pthread']
+    library\_dirs = ['/home/jpsilva/anaconda/lib']
+    define\_macros = [('SCIPY\_MKL\_H', None)]
+    include\_dirs = ['/home/jpsilva/anaconda/include']
+mkl\_info:
+    libraries = ['mkl\_intel\_lp64', 'mkl\_intel\_thread', 'mkl\_core', 'iomp5', 'pthread']
+    library\_dirs = ['/home/jpsilva/anaconda/lib']
+    define\_macros = [('SCIPY\_MKL\_H', None)]
+    include\_dirs = ['/home/jpsilva/anaconda/include']
+    \end{Verbatim}
+
+    
+
+
+    \subsection{Numpy Function With Broadcasting}
+
+
+    We'll start with a typical numpy broadcasting approach to this problem.
+Numpy broadcasting is an abstraction that allows loops over array
+indices to be executed in compiled C. For many applications, this is
+extremely fast and efficient. Unfortunately, there is a problem with
+broadcasting approaches that comes up here: it ends up allocating hidden
+temporary arrays which can eat up memory and cause computational
+overhead. Nevertheless, it's a good comparison to have. The function
+looks like this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+        
+        \PY{k}{def} \PY{n+nf}{pairwise\PYZus{}numpy}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{p}{(}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{n+nb+bp}{None}\PY{p}{,} \PY{p}{:}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{X}\PY{p}{)} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{2}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+        \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{pairwise\PYZus{}numpy}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{Benchmarks}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{numpy}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{broadc.}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+        \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+10 loops, best of 3: 40 ms per loop
+    \end{Verbatim}
+
+    
+
+
+    \subsection{Pure Python Function}
+
+
+    A loop-based solution avoids the overhead associated with temporary
+arrays, and can be written like this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{pairwise\PYZus{}python}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{:}
+            \PY{n}{M} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+            \PY{n}{N} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+            \PY{n}{D} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{empty}\PY{p}{(}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{M}\PY{p}{)}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{float}\PY{p}{)}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{:}
+                \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{0.0}
+                    \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{tmp} \PY{o}{=} \PY{n}{X}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{k}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{X}\PY{p}{[}\PY{n}{j}\PY{p}{,} \PY{n}{k}\PY{p}{]}
+                        \PY{n}{d} \PY{o}{+}\PY{o}{=} \PY{n}{tmp} \PY{o}{*} \PY{n}{tmp}
+                    \PY{n}{D}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{d}\PY{p}{)}
+            \PY{k}{return} \PY{n}{D}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+        \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{pairwise\PYZus{}python}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{Benchmarks}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{python}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{loop}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+        \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1 loops, best of 3: 2.7 s per loop
+    \end{Verbatim}
+
+    As we see, it is over 100 times slower than the numpy broadcasting
+approach! This is due to Python's dynamic type checking, which can
+drastically slow down nested loops. With these two solutions, we're left
+with a tradeoff between efficiency of computation and efficiency of
+memory usage. This is where tools like Numba and Cython become vital
+
+    
+
+
+    \subsection{Numba Wrapper}
+
+
+    \href{http://numba.pydata.org/}{Numba} is an LLVM compiler for python
+code, which allows code written in Python to be converted to highly
+efficient compiled code in real-time.\\Numba is extremely simple to use.
+We just wrap our python function with \texttt{autojit} (JIT stands for
+``just in time'' compilation) to automatically create an efficient,
+compiled version of the function:
+
+    \textbf{Note} Somehow, importing pylab breaks numba
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+         
+         \PY{k+kn}{from} \PY{n+nn}{numba} \PY{k+kn}{import} \PY{n}{double}\PY{p}{,} \PY{n}{jit}\PY{p}{,}\PY{n}{autojit}
+         
+         \PY{n+nd}{@jit}
+         \PY{k}{def} \PY{n+nf}{pairwise\PYZus{}numba}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{:}
+             \PY{n}{M} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+             \PY{n}{N} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+             \PY{n}{D} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{empty}\PY{p}{(}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{M}\PY{p}{)}\PY{p}{)}\PY{c}{\PYZsh{}, dtype=np.float)}
+             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{:}
+                     \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{0.0}
+                     \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{:}
+                         \PY{n}{tmp} \PY{o}{=} \PY{n}{X}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{k}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{X}\PY{p}{[}\PY{n}{j}\PY{p}{,} \PY{n}{k}\PY{p}{]}
+                         \PY{n}{d} \PY{o}{+}\PY{o}{=} \PY{n}{tmp} \PY{o}{*} \PY{n}{tmp}
+                     \PY{n}{D}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{d}\PY{p}{)}
+             \PY{k}{return} \PY{n}{D}
+         
+         \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{pairwise\PYZus{}numba}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{Benchmarks}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{numba}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+         \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1 loops, best of 3: 3.06 s per loop
+    \end{Verbatim}
+
+    
+
+
+    \subsection{Optimized Cython Function}
+
+
+    \href{http://cython.org}{Cython} is another package which is built to
+convert Python-like statements into compiled code. The language is
+actually a superset of Python which acts as a sort of hybrid between
+Python and C. By adding type annotations to Python code and running it
+through the Cython interpreter, we obtain fast compiled code. Here is a
+highly-optimized Cython version of the pairwise distance function, which
+we compile using IPython's Cython magic:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} \PY{n}{cythonmagic}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{cython}
+         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+         \PY{n}{cimport} \PY{n}{cython}
+         \PY{k+kn}{from} \PY{n+nn}{libc.math} \PY{n+nn}{cimport} \PY{n+nn}{sqrt}
+         
+         \PY{n+nd}{@cython.boundscheck}\PY{p}{(}\PY{n+nb+bp}{False}\PY{p}{)}
+         \PY{n+nd}{@cython.wraparound}\PY{p}{(}\PY{n+nb+bp}{False}\PY{p}{)}
+         \PY{k}{def} \PY{n+nf}{pairwise\PYZus{}cython}\PY{p}{(}\PY{n}{double}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{p}{:}\PY{p}{:}\PY{l+m+mi}{1}\PY{p}{]} \PY{n}{X}\PY{p}{)}\PY{p}{:}
+             \PY{n}{cdef} \PY{n+nb}{int} \PY{n}{M} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+             \PY{n}{cdef} \PY{n+nb}{int} \PY{n}{N} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+             \PY{n}{cdef} \PY{n}{double} \PY{n}{tmp}\PY{p}{,} \PY{n}{d}
+             \PY{n}{cdef} \PY{n}{double}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{p}{:}\PY{p}{:}\PY{l+m+mi}{1}\PY{p}{]} \PY{n}{D} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{empty}\PY{p}{(}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{M}\PY{p}{)}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{float64}\PY{p}{)}
+             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{:}
+                     \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{0.0}
+                     \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{:}
+                         \PY{n}{tmp} \PY{o}{=} \PY{n}{X}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{k}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{X}\PY{p}{[}\PY{n}{j}\PY{p}{,} \PY{n}{k}\PY{p}{]}
+                         \PY{n}{d} \PY{o}{+}\PY{o}{=} \PY{n}{tmp} \PY{o}{*} \PY{n}{tmp}
+                     \PY{n}{D}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{sqrt}\PY{p}{(}\PY{n}{d}\PY{p}{)}
+             \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{D}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+         \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{pairwise\PYZus{}cython}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{Benchmarks}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{cython}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+         \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100 loops, best of 3: 7.12 ms per loop
+    \end{Verbatim}
+
+    The Cython version, despite all the optimization, is more or less the
+same as the result of the simple Numba decorator!\\By comparison, the
+Numba version is a simple, unadorned wrapper around plainly-written
+Python code.
+
+    
+
+
+    \section{Parakeet}
+
+
+    \textbf{\href{http://www.parakeetpython.com/}{Parakeet}} is a runtime
+accelerator for an array-oriented subset of Python. If you're doing a
+lot of number crunching in Python, Parakeet may be able to significantly
+speed up your code.
+
+To accelerate a function, wrap it with Parakeet's @jit decorator:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+         
+         \PY{k+kn}{from} \PY{n+nn}{parakeet} \PY{k+kn}{import} \PY{n}{jit}
+         
+         \PY{n}{pairwise\PYZus{}parakeet} \PY{o}{=} \PY{n}{jit}\PY{p}{(}\PY{n}{pairwise\PYZus{}python}\PY{p}{)}
+         
+         \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{pairwise\PYZus{}parakeet}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{Benchmarks}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{parakeet}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+         \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100 loops, best of 3: 6.17 ms per loop
+    \end{Verbatim}
+
+    
+
+
+    \subsection{Fortran/F2Py}
+
+
+    Another option for fast computation is to write a Fortran function
+directly, and use the \texttt{f2py} package to interface with the
+function. We can write the function as follows:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{file} \PY{n}{pairwise\PYZus{}fort}\PY{o}{.}\PY{n}{f}
+         
+               \PY{n}{subroutine} \PY{n}{pairwise\PYZus{}fort}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{D}\PY{p}{,}\PY{n}{m}\PY{p}{,}\PY{n}{n}\PY{p}{)}
+                   \PY{n}{integer} \PY{p}{:}\PY{p}{:} \PY{n}{n}\PY{p}{,}\PY{n}{m}
+                   \PY{n}{double} \PY{n}{precision}\PY{p}{,} \PY{n}{intent}\PY{p}{(}\PY{o+ow}{in}\PY{p}{)} \PY{p}{:}\PY{p}{:} \PY{n}{X}\PY{p}{(}\PY{n}{m}\PY{p}{,}\PY{n}{n}\PY{p}{)}
+                   \PY{n}{double} \PY{n}{precision}\PY{p}{,} \PY{n}{intent}\PY{p}{(}\PY{n}{out}\PY{p}{)} \PY{p}{:}\PY{p}{:} \PY{n}{D}\PY{p}{(}\PY{n}{m}\PY{p}{,}\PY{n}{m}\PY{p}{)} 
+                   \PY{n}{integer} \PY{p}{:}\PY{p}{:} \PY{n}{i}\PY{p}{,}\PY{n}{j}\PY{p}{,}\PY{n}{k}
+                   \PY{n}{double} \PY{n}{precision} \PY{p}{:}\PY{p}{:} \PY{n}{r} 
+                   \PY{n}{do} \PY{n}{i} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{,}\PY{n}{m} 
+                       \PY{n}{do} \PY{n}{j} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{,}\PY{n}{m} 
+                           \PY{n}{r} \PY{o}{=} \PY{l+m+mi}{0}
+                           \PY{n}{do} \PY{n}{k} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{,}\PY{n}{n} 
+                               \PY{n}{r} \PY{o}{=} \PY{n}{r} \PY{o}{+} \PY{p}{(}\PY{n}{X}\PY{p}{(}\PY{n}{i}\PY{p}{,}\PY{n}{k}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{X}\PY{p}{(}\PY{n}{j}\PY{p}{,}\PY{n}{k}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{n}{X}\PY{p}{(}\PY{n}{i}\PY{p}{,}\PY{n}{k}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{X}\PY{p}{(}\PY{n}{j}\PY{p}{,}\PY{n}{k}\PY{p}{)}\PY{p}{)} 
+                           \PY{n}{end} \PY{n}{do} 
+                           \PY{n}{D}\PY{p}{(}\PY{n}{i}\PY{p}{,}\PY{n}{j}\PY{p}{)} \PY{o}{=} \PY{n}{sqrt}\PY{p}{(}\PY{n}{r}\PY{p}{)} 
+                       \PY{n}{end} \PY{n}{do} 
+                   \PY{n}{end} \PY{n}{do} 
+               \PY{n}{end} \PY{n}{subroutine} \PY{n}{pairwise\PYZus{}fort}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting pairwise\_fort.f
+    \end{Verbatim}
+
+    We can then use the shell interface to compile the Fortran function. In
+order to hide the output of this operation, we direct it into
+\texttt{/dev/null} (note: I tested this on Linux, and it may have to be
+modified for Mac or Windows).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{o}{!}f2py \PYZhy{}c \PYZhy{}\PYZhy{}help\PYZhy{}fcompiler
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Gnu95FCompiler instance properties:
+  archiver        = ['/usr/bin/gfortran', '-cr']
+  compile\_switch  = '-c'
+  compiler\_f77    = ['/usr/bin/gfortran', '-Wall', '-g', '-ffixed-form', '-
+                    fno-second-underscore', '-fPIC', '-O3', '-funroll-loops']
+  compiler\_f90    = ['/usr/bin/gfortran', '-Wall', '-g', '-fno-second-
+                    underscore', '-fPIC', '-O3', '-funroll-loops']
+  compiler\_fix    = ['/usr/bin/gfortran', '-Wall', '-g', '-ffixed-form', '-
+                    fno-second-underscore', '-Wall', '-g', '-fno-second-
+                    underscore', '-fPIC', '-O3', '-funroll-loops']
+  libraries       = ['gfortran']
+  library\_dirs    = []
+  linker\_exe      = ['/usr/bin/gfortran', '-Wall', '-Wall']
+  linker\_so       = ['/usr/bin/gfortran', '-Wall', '-g', '-Wall', '-g', '-
+                    shared']
+  object\_switch   = '-o '
+  ranlib          = ['/usr/bin/gfortran']
+  version         = LooseVersion ('4.9.1-16')
+  version\_cmd     = ['/usr/bin/gfortran', '--version']
+Fortran compilers found:
+  --fcompiler=gnu95  GNU Fortran 95 compiler (4.9.1-16)
+Compilers available for this platform, but not found:
+  --fcompiler=absoft   Absoft Corp Fortran Compiler
+  --fcompiler=compaq   Compaq Fortran Compiler
+  --fcompiler=g95      G95 Fortran Compiler
+  --fcompiler=gnu      GNU Fortran 77 compiler
+  --fcompiler=intel    Intel Fortran Compiler for 32-bit apps
+  --fcompiler=intele   Intel Fortran Compiler for Itanium apps
+  --fcompiler=intelem  Intel Fortran Compiler for 64-bit apps
+  --fcompiler=lahey    Lahey/Fujitsu Fortran 95 Compiler
+  --fcompiler=nag      NAGWare Fortran 95 Compiler
+  --fcompiler=pathf95  PathScale Fortran Compiler
+  --fcompiler=pg       Portland Group Fortran Compiler
+  --fcompiler=vast     Pacific-Sierra Research Fortran 90 Compiler
+Compilers not available on this platform:
+  --fcompiler=hpux      HP Fortran 90 Compiler
+  --fcompiler=ibm       IBM XL Fortran Compiler
+  --fcompiler=intelev   Intel Visual Fortran Compiler for Itanium apps
+  --fcompiler=intelv    Intel Visual Fortran Compiler for 32-bit apps
+  --fcompiler=intelvem  Intel Visual Fortran Compiler for 64-bit apps
+  --fcompiler=mips      MIPSpro Fortran Compiler
+  --fcompiler=none      Fake Fortran compiler
+  --fcompiler=sun       Sun or Forte Fortran 95 Compiler
+For compiler details, run 'config\_fc --verbose' setup command.
+Removing build directory /tmp/tmpiygPNS
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{o}{!}f2py \PYZhy{}c \PYZhy{}\PYZhy{}help\PYZhy{}compiler
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+List of available compilers:
+  --compiler=bcpp     Borland C++ Compiler
+  --compiler=cygwin   Cygwin port of GNU C Compiler for Win32
+  --compiler=emx      EMX port of GNU C Compiler for OS/2
+  --compiler=intel    Intel C Compiler for 32-bit applications
+  --compiler=intele   Intel C Itanium Compiler for Itanium-based applications
+  --compiler=intelem  Intel C Compiler for 64-bit applications
+  --compiler=mingw32  Mingw32 port of GNU C Compiler for Win32
+  --compiler=msvc     Microsoft Visual C++
+  --compiler=pathcc   PathScale Compiler for SiCortex-based applications
+  --compiler=unix     standard UNIX-style compiler
+Removing build directory /tmp/tmp9lM8Xb
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{c}{\PYZsh{} Compile the Fortran with f2py.}
+         \PY{c}{\PYZsh{} We\PYZsq{}ll direct the output into /dev/null so it doesn\PYZsq{}t fill the screen}
+         \PY{c}{\PYZsh{}!f2py \PYZhy{}c \PYZhy{}\PYZhy{}compiler=intel pairwise\PYZus{}fort.f \PYZhy{}m pairwise\PYZus{}fort \PYZgt{} /dev/null}
+         \PY{o}{!}f2py \PYZhy{}c \PYZhy{}\PYZhy{}fcompiler\PY{o}{=}gnu95 pairwise\PYZus{}fort.f \PYZhy{}m pairwise\PYZus{}fort \PYZgt{} /dev/null
+\end{Verbatim}
+
+    We can import the resulting code into Python to time the execution of
+the function. To make sure we're being fair, we'll first convert the
+test array to Fortran-ordering so that no conversion needs to happen in
+the background:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+         
+         \PY{k+kn}{from} \PY{n+nn}{pairwise\PYZus{}fort} \PY{k+kn}{import} \PY{n}{pairwise\PYZus{}fort}
+         \PY{n}{XF} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{order}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{F}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{pairwise\PYZus{}fort}\PY{p}{(}\PY{n}{XF}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{Benchmarks}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{fortran/}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{f2py}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+         \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100 loops, best of 3: 6.19 ms per loop
+    \end{Verbatim}
+
+    The result is nearly a factor of two slower than the Cython and Numba
+versions.
+
+    
+
+
+    \subsection{Scipy Pairwise Distances}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+         
+         \PY{k+kn}{from} \PY{n+nn}{scipy.spatial.distance} \PY{k+kn}{import} \PY{n}{cdist}
+         \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{cdist}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{Benchmarks}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{scipy}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+         \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100 loops, best of 3: 5.79 ms per loop
+    \end{Verbatim}
+
+    
+
+
+    \subsection{Scikit-learn Pairwise Distances}
+
+
+    Scikit-learn contains the \texttt{euclidean\_distances} function, works
+on sparse matrices as well as numpy arrays, and is implemented in
+Cython:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+         
+         \PY{k+kn}{from} \PY{n+nn}{sklearn.metrics} \PY{k+kn}{import} \PY{n}{euclidean\PYZus{}distances}
+         \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{euclidean\PYZus{}distances}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{Benchmarks}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{sklearn}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+         \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100 loops, best of 3: 9.7 ms per loop
+    \end{Verbatim}
+
+    \texttt{euclidean\_distances} is several times slower than the Numba
+pairwise function on dense arrays.
+
+
+    \subsection{Comparing the Results}
+
+
+    As a summary of the results, we'll create a bar-chart to visualize the
+timings:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} \PY{n}{inline}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{n}{labels} \PY{o}{=} \PY{n}{Benchmarks}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}
+         \PY{n}{timings} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{timedelta64}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{float}\PY{p}{(}\PY{n}{value}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{,}\PY{n+nb}{str}\PY{p}{(}\PY{n}{value}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{timedelta64}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{s}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{for} \PY{n}{value} \PY{o+ow}{in} \PY{n}{Benchmarks}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}\PY{p}{]}
+         \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{labels}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{axes}\PY{p}{(}\PY{n}{xticks}\PY{o}{=}\PY{n}{x}\PY{p}{,} \PY{n}{yscale}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{log}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{timings}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+m+mf}{0.6}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.4}\PY{p}{,} \PY{n}{bottom}\PY{o}{=}\PY{l+m+mf}{1E\PYZhy{}6}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{labels}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{o}{*}\PY{n+nb}{min}\PY{p}{(}\PY{n}{timings}\PY{p}{)}\PY{p}{,} \PY{l+m+mf}{1.1}\PY{o}{*}\PY{n+nb}{max}\PY{p}{(}\PY{n}{timings}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{xaxis}\PY{o}{.}\PY{n}{set\PYZus{}major\PYZus{}formatter}\PY{p}{(}\PY{n}{plt}\PY{o}{.}\PY{n}{FuncFormatter}\PY{p}{(}\PY{k}{lambda} \PY{n}{i}\PY{p}{,} \PY{n}{loc}\PY{p}{:} \PY{n}{labels}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{time (s)}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Pairwise Distance Timings}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}31}]:} <matplotlib.text.Text at 0x7f7c57063f50>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{VIII-Benchmarks_files/VIII-Benchmarks_66_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Note that this is log-scaled, so the vertical space between two grid
+lines indicates a factor of 10 difference in computation time. As Pure
+Python takes more time by two orders of magnitude we'll now remove it
+from the benchmarks for a better comparison.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{n}{labels} \PY{o}{=} \PY{p}{[}\PY{n}{val} \PY{k}{for} \PY{n}{val} \PY{o+ow}{in} \PY{n}{Benchmarks}\PY{o}{.}\PY{n}{iterkeys}\PY{p}{(}\PY{p}{)} \PY{k}{if} \PY{n}{val} \PY{o}{!=} \PY{l+s}{\PYZsq{}}\PY{l+s}{python}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{loop}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{timings} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{timedelta64}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{float}\PY{p}{(}\PY{n}{value}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{,}\PY{n+nb}{str}\PY{p}{(}\PY{n}{value}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{timedelta64}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{s}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PYZbs{}
+                    \PY{k}{for} \PY{n}{k}\PY{p}{,} \PY{n}{value} \PY{o+ow}{in} \PY{n}{Benchmarks}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)} \PY{k}{if} \PY{n}{k} \PY{o}{!=} \PY{l+s}{\PYZsq{}}\PY{l+s}{python}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{loop}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{labels}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{axes}\PY{p}{(}\PY{n}{xticks}\PY{o}{=}\PY{n}{x}\PY{p}{,} \PY{n}{yscale}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{log}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{timings}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+m+mf}{0.6}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.4}\PY{p}{,} \PY{n}{bottom}\PY{o}{=}\PY{l+m+mf}{1E\PYZhy{}6}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{labels}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{o}{*}\PY{n+nb}{min}\PY{p}{(}\PY{n}{timings}\PY{p}{)}\PY{p}{,} \PY{l+m+mf}{1.1}\PY{o}{*}\PY{n+nb}{max}\PY{p}{(}\PY{n}{timings}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{xaxis}\PY{o}{.}\PY{n}{set\PYZus{}major\PYZus{}formatter}\PY{p}{(}\PY{n}{plt}\PY{o}{.}\PY{n}{FuncFormatter}\PY{p}{(}\PY{k}{lambda} \PY{n}{i}\PY{p}{,} \PY{n}{loc}\PY{p}{:} \PY{n}{labels}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{time (s)}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Pairwise Distance Timings}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}33}]:} <matplotlib.text.Text at 0x7fb6ba1d5b10>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{VIII-Benchmarks_files/VIII-Benchmarks_68_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    
+
+
+    \subsection{\textbf{1D European Option using Black-Scholes Formula}}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{c}{\PYZsh{}Restart notebook!}
+\end{Verbatim}
+
+    We'll now benchmark a simple function which returns the price of a 1D
+European Option using the closed form solution with the following
+parameters:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  $S_0$ = 100
+\item
+  $K$ = 100
+\item
+  $T$ = 1 (years)
+\item
+  $\sigma$ = 0.3
+\item
+  $r$ = 0.03
+\item
+  dividend = 0
+\item
+  option type = -1 (+1 for call, -1 for put)
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{S0} \PY{o}{=} \PY{l+m+mi}{100}
+         \PY{n}{K} \PY{o}{=} \PY{l+m+mi}{100}
+         \PY{n}{T} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{n}{vol} \PY{o}{=} \PY{l+m+mf}{0.3}
+         \PY{n}{r} \PY{o}{=} \PY{l+m+mf}{0.03}
+         \PY{n}{q} \PY{o}{=} \PY{l+m+mi}{0}
+         \PY{n}{optype} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{k+kn}{from} \PY{n+nn}{numpy} \PY{k+kn}{import} \PY{n}{log}\PY{p}{,} \PY{n}{sqrt}\PY{p}{,} \PY{n}{zeros}\PY{p}{,} \PY{n}{exp}\PY{p}{,} \PY{n}{arange}
+         \PY{k+kn}{from} \PY{n+nn}{scipy.special} \PY{k+kn}{import} \PY{n}{erf}
+         
+         \PY{k}{def} \PY{n+nf}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{s}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ }\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{]}
+         
+         \PY{n}{benchs} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{python}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{numba}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{cython}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{matlab}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{BS\PYZus{}bench} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n}{benchs}\PY{p}{,}\PY{n}{zeros}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    
+
+
+    \section{Pure Python}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{k}{def} \PY{n+nf}{std\PYZus{}norm\PYZus{}cdf}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{erf}\PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mf}{2.0}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         
+         \PY{k}{def} \PY{n+nf}{black\PYZus{}scholes}\PY{p}{(}\PY{n}{s}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{n}{v}\PY{p}{,} \PY{n}{rf}\PY{p}{,} \PY{n}{div}\PY{p}{,} \PY{n}{cp}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Price an option using the Black\PYZhy{}Scholes model.}
+         \PY{l+s+sd}{    }
+         \PY{l+s+sd}{    s : initial stock price}
+         \PY{l+s+sd}{    k : strike price}
+         \PY{l+s+sd}{    t : expiration time}
+         \PY{l+s+sd}{    v : volatility}
+         \PY{l+s+sd}{    rf : risk\PYZhy{}free rate}
+         \PY{l+s+sd}{    div : dividend}
+         \PY{l+s+sd}{    cp : +1/\PYZhy{}1 for call/put}
+         \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{n}{d1} \PY{o}{=} \PY{p}{(}\PY{n}{log}\PY{p}{(}\PY{n}{s}\PY{o}{/}\PY{n}{k}\PY{p}{)}\PY{o}{+}\PY{p}{(}\PY{n}{rf}\PY{o}{\PYZhy{}}\PY{n}{div}\PY{o}{+}\PY{l+m+mf}{0.5}\PY{o}{*}\PY{n+nb}{pow}\PY{p}{(}\PY{n}{v}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{v}\PY{o}{*}\PY{n}{sqrt}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{)}
+             \PY{n}{d2} \PY{o}{=} \PY{n}{d1} \PY{o}{\PYZhy{}} \PY{n}{v}\PY{o}{*}\PY{n}{sqrt}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+             \PY{n}{optprice} \PY{o}{=} \PY{n}{cp}\PY{o}{*}\PY{n}{s}\PY{o}{*}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{div}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{*}\PY{n}{std\PYZus{}norm\PYZus{}cdf}\PY{p}{(}\PY{n}{cp}\PY{o}{*}\PY{n}{d1}\PY{p}{)} \PY{o}{\PYZhy{}} \PYZbs{}
+                     \PY{n}{cp}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{rf}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{*}\PY{n}{std\PYZus{}norm\PYZus{}cdf}\PY{p}{(}\PY{n}{cp}\PY{o}{*}\PY{n}{d2}\PY{p}{)}
+             \PY{k}{return} \PY{n}{optprice}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+         \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{black\PYZus{}scholes}\PY{p}{(}\PY{n}{S0}\PY{p}{,} \PY{n}{K}\PY{p}{,} \PY{n}{T}\PY{p}{,} \PY{n}{vol}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{q}\PY{p}{,} \PY{n}{optype}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{n}{BS\PYZus{}bench}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{python}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+         \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100000 loops, best of 3: 11.6 us per loop
+    \end{Verbatim}
+
+    
+
+
+    \section{Numba}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{k+kn}{from} \PY{n+nn}{numba} \PY{k+kn}{import} \PY{n}{double}
+         \PY{k+kn}{from} \PY{n+nn}{numba.decorators} \PY{k+kn}{import} \PY{n}{jit}\PY{p}{,} \PY{n}{autojit}
+         \PY{k+kn}{import} \PY{n+nn}{math}
+         
+         \PY{n+nd}{@autojit}
+         \PY{k}{def} \PY{n+nf}{std\PYZus{}norm\PYZus{}cdf\PYZus{}numba}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{math}\PY{o}{.}\PY{n}{erf}\PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mf}{2.0}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n+nd}{@autojit}
+         \PY{k}{def} \PY{n+nf}{black\PYZus{}scholes\PYZus{}numba}\PY{p}{(}\PY{n}{s}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{n}{v}\PY{p}{,} \PY{n}{rf}\PY{p}{,} \PY{n}{div}\PY{p}{,} \PY{n}{cp}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Price an option using the Black\PYZhy{}Scholes model.}
+         \PY{l+s+sd}{    }
+         \PY{l+s+sd}{    s : initial stock price}
+         \PY{l+s+sd}{    k : strike price}
+         \PY{l+s+sd}{    t : expiration time}
+         \PY{l+s+sd}{    v : volatility}
+         \PY{l+s+sd}{    rf : risk\PYZhy{}free rate}
+         \PY{l+s+sd}{    div : dividend}
+         \PY{l+s+sd}{    cp : +1/\PYZhy{}1 for call/put}
+         \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{n}{d1} \PY{o}{=} \PY{p}{(}\PY{n}{math}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{n}{s}\PY{o}{/}\PY{n}{k}\PY{p}{)}\PY{o}{+}\PY{p}{(}\PY{n}{rf}\PY{o}{\PYZhy{}}\PY{n}{div}\PY{o}{+}\PY{l+m+mf}{0.5}\PY{o}{*}\PY{n}{v}\PY{o}{*}\PY{n}{v}\PY{p}{)}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{v}\PY{o}{*}\PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{)}
+             \PY{n}{d2} \PY{o}{=} \PY{n}{d1} \PY{o}{\PYZhy{}} \PY{n}{v}\PY{o}{*}\PY{n}{math}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+             \PY{n}{optprice} \PY{o}{=} \PY{n}{cp}\PY{o}{*}\PY{n}{s}\PY{o}{*}\PY{n}{math}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{div}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{*}\PY{n}{std\PYZus{}norm\PYZus{}cdf\PYZus{}numba}\PY{p}{(}\PY{n}{cp}\PY{o}{*}\PY{n}{d1}\PY{p}{)} \PY{o}{\PYZhy{}} \PYZbs{}
+                     \PY{n}{cp}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{math}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{rf}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{*}\PY{n}{std\PYZus{}norm\PYZus{}cdf\PYZus{}numba}\PY{p}{(}\PY{n}{cp}\PY{o}{*}\PY{n}{d2}\PY{p}{)}
+             \PY{k}{return} \PY{n}{optprice}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+         \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{black\PYZus{}scholes\PYZus{}numba}\PY{p}{(}\PY{n}{S0}\PY{p}{,} \PY{n}{K}\PY{p}{,} \PY{n}{T}\PY{p}{,} \PY{n}{vol}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{q}\PY{p}{,} \PY{n}{optype}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{n}{BS\PYZus{}bench}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{numba}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+         \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1 loops, best of 3: 5.01 us per loop
+    \end{Verbatim}
+
+    
+
+
+    \section{Cython}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} \PY{n}{cythonmagic}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The cythonmagic extension is already loaded. To reload it, use:
+  \%reload\_ext cythonmagic
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{cython}
+         \PY{n}{cimport} \PY{n}{cython}
+         \PY{k+kn}{from} \PY{n+nn}{libc.math} \PY{n+nn}{cimport} \PY{n+nn}{exp}\PY{p}{,} \PY{n}{sqrt}\PY{p}{,} \PY{n+nb}{pow}\PY{p}{,} \PY{n}{log}\PY{p}{,} \PY{n}{erf}
+         
+         \PY{n+nd}{@cython.cdivision}\PY{p}{(}\PY{n+nb+bp}{True}\PY{p}{)}
+         \PY{n}{cdef} \PY{n}{double} \PY{n}{std\PYZus{}norm\PYZus{}cdf}\PY{p}{(}\PY{n}{double} \PY{n}{x}\PY{p}{)} \PY{n}{nogil}\PY{p}{:}
+             \PY{k}{return} \PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{erf}\PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mf}{2.0}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n+nd}{@cython.cdivision}\PY{p}{(}\PY{n+nb+bp}{True}\PY{p}{)}
+         \PY{k}{def} \PY{n+nf}{black\PYZus{}scholes}\PY{p}{(}\PY{n}{double} \PY{n}{s}\PY{p}{,} \PY{n}{double} \PY{n}{k}\PY{p}{,} \PY{n}{double} \PY{n}{t}\PY{p}{,} \PY{n}{double} \PY{n}{v}\PY{p}{,}
+                          \PY{n}{double} \PY{n}{rf}\PY{p}{,} \PY{n}{double} \PY{n}{div}\PY{p}{,} \PY{n}{double} \PY{n}{cp}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Price an option using the Black\PYZhy{}Scholes model.}
+         \PY{l+s+sd}{    }
+         \PY{l+s+sd}{    s : initial stock price}
+         \PY{l+s+sd}{    k : strike price}
+         \PY{l+s+sd}{    t : expiration time}
+         \PY{l+s+sd}{    v : volatility}
+         \PY{l+s+sd}{    rf : risk\PYZhy{}free rate}
+         \PY{l+s+sd}{    div : dividend}
+         \PY{l+s+sd}{    cp : +1/\PYZhy{}1 for call/put}
+         \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{n}{cdef} \PY{n}{double} \PY{n}{d1}\PY{p}{,} \PY{n}{d2}\PY{p}{,} \PY{n}{optprice}
+             \PY{k}{with} \PY{n}{nogil}\PY{p}{:}
+                 \PY{n}{d1} \PY{o}{=} \PY{p}{(}\PY{n}{log}\PY{p}{(}\PY{n}{s}\PY{o}{/}\PY{n}{k}\PY{p}{)}\PY{o}{+}\PY{p}{(}\PY{n}{rf}\PY{o}{\PYZhy{}}\PY{n}{div}\PY{o}{+}\PY{l+m+mf}{0.5}\PY{o}{*}\PY{n+nb}{pow}\PY{p}{(}\PY{n}{v}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{v}\PY{o}{*}\PY{n}{sqrt}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{d2} \PY{o}{=} \PY{n}{d1} \PY{o}{\PYZhy{}} \PY{n}{v}\PY{o}{*}\PY{n}{sqrt}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+                 \PY{n}{optprice} \PY{o}{=} \PY{n}{cp}\PY{o}{*}\PY{n}{s}\PY{o}{*}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{div}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{*}\PY{n}{std\PYZus{}norm\PYZus{}cdf}\PY{p}{(}\PY{n}{cp}\PY{o}{*}\PY{n}{d1}\PY{p}{)} \PY{o}{\PYZhy{}} \PYZbs{}
+                     \PY{n}{cp}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{rf}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{*}\PY{n}{std\PYZus{}norm\PYZus{}cdf}\PY{p}{(}\PY{n}{cp}\PY{o}{*}\PY{n}{d2}\PY{p}{)}
+             \PY{k}{return} \PY{n}{optprice}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{capture} \PY{n}{cap}
+         \PY{o}{\PYZpc{}}\PY{k}{timeit} \PY{n}{black\PYZus{}scholes}\PY{p}{(}\PY{n}{S0}\PY{p}{,} \PY{n}{K}\PY{p}{,} \PY{n}{T}\PY{p}{,} \PY{n}{vol}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{q}\PY{p}{,} \PY{n}{optype}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{n}{BS\PYZus{}bench}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{cython}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{parse\PYZus{}cap}\PY{p}{(}\PY{n}{cap}\PY{p}{)}
+         \PY{k}{print} \PY{n}{cap}\PY{o}{.}\PY{n}{stdout}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1000000 loops, best of 3: 400 ns per loop
+    \end{Verbatim}
+
+    
+
+
+    \section{MATLAB}
+
+
+    We now analyse the corresponding \textbf{MATLAB} code which we'll use
+for comparison
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{o}{!}cat ../std\PYZus{}norm\PYZus{}cdf.m
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+function z = std\_norm\_cdf(x)
+z = 0.5*(1+erf(x/sqrt(2.0)));
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:} \PY{o}{!}cat ../black\PYZus{}scholes.m
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+function z = black\_scholes(s, k, t, v, rf, div, cp)
+    
+d1 = (log(s/k)+(rf-div+0.5*v*v)*t)/(v*sqrt(t));
+d2 = d1 - v*sqrt(t);
+optprice = cp*s*exp(-div*t)*std\_norm\_cdf(cp*d1)-cp*k*exp(-rf*t)*std\_norm\_cdf(cp*d2);
+z = optprice;
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} \PY{n}{inline}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}50}]:} \PY{n}{BS\PYZus{}bench}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{matlab}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{l+s}{u\PYZsq{}}\PY{l+s}{55}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{u\PYZsq{}}\PY{l+s}{us}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{labels}\PY{o}{=} \PY{n}{BS\PYZus{}bench}\PY{o}{.}\PY{n}{keys}\PY{p}{(}\PY{p}{)}
+         \PY{n}{timings} \PY{o}{=} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{timedelta64}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{float}\PY{p}{(}\PY{n}{value}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{,}\PY{n+nb}{str}\PY{p}{(}\PY{n}{value}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{timedelta64}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{s}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{for} \PY{n}{value} \PY{o+ow}{in} \PY{n}{BS\PYZus{}bench}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}\PY{p}{]}
+         \PY{n}{x} \PY{o}{=} \PY{n}{arange}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{labels}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{axes}\PY{p}{(}\PY{n}{xticks}\PY{o}{=}\PY{n}{x}\PY{p}{,} \PY{n}{yscale}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{log}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{timings}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+m+mf}{0.6}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.4}\PY{p}{,} \PY{n}{bottom}\PY{o}{=}\PY{l+m+mf}{1E\PYZhy{}6}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{labels}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{n+nb}{min}\PY{p}{(}\PY{n}{timings}\PY{p}{)}\PY{p}{,} \PY{l+m+mf}{1.1}\PY{o}{*}\PY{n+nb}{max}\PY{p}{(}\PY{n}{timings}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{xaxis}\PY{o}{.}\PY{n}{set\PYZus{}major\PYZus{}formatter}\PY{p}{(}\PY{n}{plt}\PY{o}{.}\PY{n}{FuncFormatter}\PY{p}{(}\PY{k}{lambda} \PY{n}{i}\PY{p}{,} \PY{n}{loc}\PY{p}{:} \PY{n}{labels}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{time (\PYZdl{}s\PYZdl{})}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Black\PYZhy{}Scholes Timings}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}50}]:} <matplotlib.text.Text at 0x7f7c55db4a50>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{VIII-Benchmarks_files/VIII-Benchmarks_97_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \emph{This post was written entirely as an IPython notebook.} \emph{The
+full notebook can be downloaded}
+\href{https://raw.github.com/PoeticCapybara/Python-Introduction-Zittau/master/Lecture-8-Benchmarks.ipynb}{\emph{here}},
+\emph{or viewed statically on}
+\href{http://nbviewer.ipython.org/urls/raw.github.com/PoeticCapybara/Python-Introduction-Zittau/master/Lecture-8-Benchmarks.ipynb}{\emph{nbviewer}}
+
+\hyperref[top]{Back to top}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}51}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} \PY{n}{version\PYZus{}information}
+         \PY{o}{\PYZpc{}}\PY{k}{version\PYZus{}information} \PY{n}{numpy}\PY{p}{,}\PY{n}{numba}\PY{p}{,}\PY{n}{parakeet}\PY{p}{,}\PY{n}{cython}\PY{p}{,}\PY{n}{matplotlib}\PY{p}{,}\PY{n}{scipy}\PY{p}{,}\PY{n}{sklearn}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}51}]:}
+    
+    \begin{tabular}{|l|l|}\hline
+{\bf Software} & {\bf Version} \\ \hline\hline
+Python & 2.7.8 |Anaconda 2.1.0 (64-bit)| (default, Aug 21 2014, 18:22:21) [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] \\ \hline
+IPython & 2.3.1 \\ \hline
+OS & posix [linux2] \\ \hline
+numpy & 1.9.1 \\ \hline
+numba & 0.15.1 \\ \hline
+parakeet & 0.23.2 \\ \hline
+cython & 0.21.1 \\ \hline
+matplotlib & 1.4.2 \\ \hline
+scipy & 0.14.0 \\ \hline
+sklearn & 0.15.2 \\ \hline
+\hline \multicolumn{2}{|l|}{Fri Dec 05 11:18:11 2014 CET} \\ \hline
+\end{tabular}
+
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.core.display} \PY{k+kn}{import} \PY{n}{HTML}
+        \PY{k}{def} \PY{n+nf}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{styles} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{./styles/custom.css}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{r}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+            \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{styles}\PY{p}{)}
+        \PY{n}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} <IPython.core.display.HTML at 0x7fb6edb1b8d0>
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

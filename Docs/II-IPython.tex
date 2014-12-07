@@ -1,0 +1,919 @@
+
+
+
+
+
+
+
+    
+    \section{II-\href{http://ipython.org/}{IPython}}\label{ii-ipython}
+
+    \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \href{}{Tab Completion}
+\item
+  \href{}{Introspection}
+\item
+  \href{}{We need to go deeper}
+\item
+  \href{}{\%paste}
+\item
+  \href{}{Exception Handling}
+\item
+  \href{}{Magic Commands}
+\item
+  \href{}{Shell}
+\item
+  \href{}{\%pdb}
+\item
+  \href{}{\%time and \%timeit}
+\item
+  \href{}{Profiles}
+\item
+  \href{}{Miscellaneous}
+\end{itemize}
+
+    
+
+
+    \subsection{Tab Completion}
+
+
+
+    \subparagraph{Objects}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[17]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{stringA} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{Welcome to Python}\PY{l+s}{\PYZsq{}}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[21]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{stringA}\PY{o}{.}\PY{n}{capitalize}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[21]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+'Welcome to python'
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[22]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{dir}\PY{p}{(}\PY{n}{stringA}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[22]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+['__add__',
+ '__class__',
+ '__contains__',
+ '__delattr__',
+ '__doc__',
+ '__eq__',
+ '__format__',
+ '__ge__',
+ '__getattribute__',
+ '__getitem__',
+ '__getnewargs__',
+ '__getslice__',
+ '__gt__',
+ '__hash__',
+ '__init__',
+ '__le__',
+ '__len__',
+ '__lt__',
+ '__mod__',
+ '__mul__',
+ '__ne__',
+ '__new__',
+ '__reduce__',
+ '__reduce_ex__',
+ '__repr__',
+ '__rmod__',
+ '__rmul__',
+ '__setattr__',
+ '__sizeof__',
+ '__str__',
+ '__subclasshook__',
+ '_formatter_field_name_split',
+ '_formatter_parser',
+ 'capitalize',
+ 'center',
+ 'count',
+ 'decode',
+ 'encode',
+ 'endswith',
+ 'expandtabs',
+ 'find',
+ 'format',
+ 'index',
+ 'isalnum',
+ 'isalpha',
+ 'isdigit',
+ 'islower',
+ 'isspace',
+ 'istitle',
+ 'isupper',
+ 'join',
+ 'ljust',
+ 'lower',
+ 'lstrip',
+ 'partition',
+ 'replace',
+ 'rfind',
+ 'rindex',
+ 'rjust',
+ 'rpartition',
+ 'rsplit',
+ 'rstrip',
+ 'split',
+ 'splitlines',
+ 'startswith',
+ 'strip',
+ 'swapcase',
+ 'title',
+ 'translate',
+ 'upper',
+ 'zfill']
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+
+    \subparagraph{Modules}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[12]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{math}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[14]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{math}\PY{o}{.}\PY{n}{acos}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[14]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+<function math.acos>
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[15]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{dir}\PY{p}{(}\PY{n}{math}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[15]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+['__doc__',
+ '__file__',
+ '__name__',
+ '__package__',
+ 'acos',
+ 'acosh',
+ 'asin',
+ 'asinh',
+ 'atan',
+ 'atan2',
+ 'atanh',
+ 'ceil',
+ 'copysign',
+ 'cos',
+ 'cosh',
+ 'degrees',
+ 'e',
+ 'erf',
+ 'erfc',
+ 'exp',
+ 'expm1',
+ 'fabs',
+ 'factorial',
+ 'floor',
+ 'fmod',
+ 'frexp',
+ 'fsum',
+ 'gamma',
+ 'hypot',
+ 'isinf',
+ 'isnan',
+ 'ldexp',
+ 'lgamma',
+ 'log',
+ 'log10',
+ 'log1p',
+ 'modf',
+ 'pi',
+ 'pow',
+ 'radians',
+ 'sin',
+ 'sinh',
+ 'sqrt',
+ 'tan',
+ 'tanh',
+ 'trunc']
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+
+    \subparagraph{Command line}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[24]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{!}mkdir \PY{l+s+s1}{\PYZsq{}mkdir\PYZsq{}}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[25]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{!}rm \PYZhy{}r \PY{l+s+s1}{\PYZsq{}./mkdir/\PYZsq{}}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[31]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{!}ls
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Day1					    IV-SciPy.ipynb	tweet\_dumper.py		VII-Tips
+Day2					    IX-Debugging.ipynb	tweet\_dumper.py\textasciitilde{}	VII-TipsandTricks.ipynb
+Docs					    pairwise\_fort.f	tweet\_dumper.pyc	VI-Pandas.ipynb
+Exercises.ipynb				    pairwise\_fort.so	version\_information	V-Matplotlib.ipynb
+III-Numpy.ipynb				    README.md		VII-			X-Parallelization.ipynb
+II-IPython.ipynb			    TOC2.ipynb		VIII-Benchmarks.ipynb
+I-Introduction to Python Programming.ipynb  TOC.ipynb		VIII-Benchmarks.ipynb\textasciitilde{}
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[29]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{!}cat /proc/cpuinfo
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+processor	: 0
+vendor\_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i5-4300U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x14
+cpu MHz		: 1900.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu\_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant\_tsc arch\_perfmon pebs bts rep\_good nopl xtopology nonstop\_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds\_cpl vmx smx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4\_1 sse4\_2 x2apic movbe popcnt tsc\_deadline\_timer aes xsave avx f16c rdrand lahf\_lm abm ida arat epb xsaveopt pln pts dtherm tpr\_shadow vnmi flexpriority ept vpid fsgsbase tsc\_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm
+bogomips	: 4988.54
+clflush size	: 64
+cache\_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor\_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i5-4300U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x14
+cpu MHz		: 1900.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu\_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant\_tsc arch\_perfmon pebs bts rep\_good nopl xtopology nonstop\_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds\_cpl vmx smx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4\_1 sse4\_2 x2apic movbe popcnt tsc\_deadline\_timer aes xsave avx f16c rdrand lahf\_lm abm ida arat epb xsaveopt pln pts dtherm tpr\_shadow vnmi flexpriority ept vpid fsgsbase tsc\_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm
+bogomips	: 4988.54
+clflush size	: 64
+cache\_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor\_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i5-4300U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x14
+cpu MHz		: 1500.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu\_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant\_tsc arch\_perfmon pebs bts rep\_good nopl xtopology nonstop\_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds\_cpl vmx smx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4\_1 sse4\_2 x2apic movbe popcnt tsc\_deadline\_timer aes xsave avx f16c rdrand lahf\_lm abm ida arat epb xsaveopt pln pts dtherm tpr\_shadow vnmi flexpriority ept vpid fsgsbase tsc\_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm
+bogomips	: 4988.54
+clflush size	: 64
+cache\_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor\_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i5-4300U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x14
+cpu MHz		: 1900.000
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu\_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant\_tsc arch\_perfmon pebs bts rep\_good nopl xtopology nonstop\_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds\_cpl vmx smx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4\_1 sse4\_2 x2apic movbe popcnt tsc\_deadline\_timer aes xsave avx f16c rdrand lahf\_lm abm ida arat epb xsaveopt pln pts dtherm tpr\_shadow vnmi flexpriority ept vpid fsgsbase tsc\_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm
+bogomips	: 4988.54
+clflush size	: 64
+cache\_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+
+    \subsubsection{What is the difference between atan and atan2?}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[32]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{reload}\PY{p}{(}\PY{n}{math}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[32]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+<module 'math' from '/home/jpsilva/anaconda/lib/python2.7/lib-dynload/math.so'>
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[43]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{numpy}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[50]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{err}{?}\PY{n}{numpy}\PY{o}{.}\PY{n}{arctan}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[57]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{numpy}\PY{o}{.}\PY{n}{arctan}\PY{p}{(}\PY{n}{numpy}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{4}\PY{p}{)} \PY{o}{==} \PY{n}{math}\PY{o}{.}\PY{n}{atan}\PY{p}{(}\PY{n}{numpy}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{4}\PY{p}{)}
+\PY{n}{numpy}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{numpy}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[57]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+1.0
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+
+    \subsection{Exception Handling}
+
+
+
+    \subsection{Magic}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[58]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{quickref}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[1]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{IPython.core.display} \PY{k+kn}{import} \PY{n}{HTML}
+\PY{k}{def} \PY{n+nf}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{n}{styles} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{./styles/custom.css}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{r}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+    \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{styles}\PY{p}{)}
+\PY{n}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[1]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML at 0x7f8c3992f850>
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+

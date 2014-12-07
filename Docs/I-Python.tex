@@ -1,0 +1,2241 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{I-Python}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    
+
+    \section{I-\href{https://www.python.org/}{Python}}\label{i-python}
+
+
+    \subsection{Index}
+
+
+    \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \hyperref[characterux5fencoding]{Character Encoding}
+\item
+  \hyperref[modules]{Modules}
+\item
+  \hyperref[variablesux5fandux5ftypes]{Variables and Types}
+\item
+  \hyperref[fundamentalux5ftypes]{Fundamental Types}
+\item
+  \hyperref[operatorsux5fandux5fcomparisons]{Operators and Comparisons}
+\item
+  \hyperref[compoundux5ftypes]{Compound Types}
+\item
+  \hyperref[controlux5fflow]{Control Flow}
+\item
+  \hyperref[loops]{Loops}
+\item
+  \hyperref[functions]{Functions}
+\item
+  \hyperref[classes]{Classes}
+\end{itemize}
+
+    \subsection{Python program files}\label{python-program-files}
+
+\begin{itemize}
+\item
+  Python code is usually stored in text files with the file ending
+  ``\texttt{.py}'':
+
+\begin{verbatim}
+myprogram.py
+\end{verbatim}
+\item
+  Every line in a Python program file is assumed to be a Python
+  statement.
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    The only exception is comment lines, which start with the character
+    \texttt{\#} (optionally preceded by an arbitrary number of
+    white-space characters, i.e., tabs or spaces). Comment lines are
+    usually ignored by the Python interpreter.
+  \end{itemize}
+\item
+  To run our Python program from the command line we use:
+
+\begin{verbatim}
+$ python myprogram.py
+\end{verbatim}
+\item
+  On UNIX systems it is common to define the path to the interpreter on
+  the first line of the program (note that this is a comment line as far
+  as the Python interpreter is concerned):
+
+\begin{verbatim}
+#!/usr/bin/env python
+\end{verbatim}
+\end{itemize}
+
+If we do, and if we additionally set the file script to be executable,
+we can run the program like this:
+
+\begin{verbatim}
+    $ myprogram.py
+\end{verbatim}
+
+\paragraph{Example:}\label{example}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{script\PYZus{}dir} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{../scripts/}\PY{l+s}{\PYZsq{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{ls} \PY{err}{\PYZdl{}}\PY{n}{script\PYZus{}dir}\PY{l+s}{\PYZdq{}}\PY{l+s}{hello\PYZhy{}world}\PY{l+s}{\PYZdq{}}\PY{o}{*}\PY{o}{.}\PY{n}{py}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+../scripts/hello-world-in-german.py  ../scripts/hello-world.py
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{cat} \PY{err}{\PYZdl{}}\PY{n}{script\PYZus{}dir}\PY{l+s}{\PYZdq{}}\PY{l+s}{hello\PYZhy{}world.py}\PY{l+s}{\PYZdq{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\#!/usr/bin/env python
+
+print("Bergische Universitat Wuppertal!")
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{o}{!}python \PY{n+nv}{\PYZdl{}script\PYZus{}dir}\PY{l+s+s2}{\PYZdq{}hello\PYZhy{}world.py\PYZdq{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Bergische Universitat Wuppertal!
+    \end{Verbatim}
+
+    
+
+    \subsubsection{Character encoding}\label{character-encoding}
+
+The standard character encoding is ASCII, but we can use any other
+encoding, for example UTF-8. To specify that UTF-8 is used we include
+the special line
+
+\begin{verbatim}
+# -*- coding: UTF-8 -*-
+\end{verbatim}
+
+at the top of the file.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{cat} \PY{err}{\PYZdl{}}\PY{n}{script\PYZus{}dir}\PY{l+s}{\PYZdq{}}\PY{l+s}{hello\PYZhy{}world\PYZhy{}in\PYZhy{}german.py}\PY{l+s}{\PYZdq{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\#!/usr/bin/env python
+\# -*- coding: UTF-8 -*-
+
+print("Bergische Universität Wuppertal!")
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{o}{!}python \PY{n+nv}{\PYZdl{}script\PYZus{}dir}\PY{l+s+s2}{\PYZdq{}hello\PYZhy{}world\PYZhy{}in\PYZhy{}german.py\PYZdq{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Bergische Universität Wuppertal!
+    \end{Verbatim}
+
+    Other than these two \emph{optional} lines in the beginning of a Python
+code file, no additional code is required for initializing a program.
+
+    
+
+    \subsection{Modules}\label{modules}
+
+Most of the functionality in Python is provided by \emph{modules}.
+
+To use a module in a Python program it first has to be imported. A
+module can be imported using the \texttt{import} statement. For example,
+to import the module \texttt{math}, which contains many standard
+mathematical functions, we can do:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{k+kn}{import} \PY{n+nn}{math}
+\end{Verbatim}
+
+    This includes the whole module and makes it available for use later in
+the program. For example, we can do:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{k+kn}{import} \PY{n+nn}{math}
+         
+         \PY{n}{x} \PY{o}{=} \PY{n}{math}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{math}\PY{o}{.}\PY{n}{pi}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1.0
+    \end{Verbatim}
+
+    Alternatively, we can chose to import all symbols (functions and
+variables) in a module to the current namespace (so that we don't need
+to use the prefix ``\texttt{math.}'' every time we use something from
+the \texttt{math} module:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{k+kn}{from} \PY{n+nn}{math} \PY{k+kn}{import} \PY{o}{*}
+         
+         \PY{n}{x} \PY{o}{=} \PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{pi}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1.0
+    \end{Verbatim}
+
+    As a third alternative, we can chose to import only a few selected
+symbols from a module by explicitly listing which ones we want to import
+instead of using the wildcard character \texttt{*}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{k+kn}{from} \PY{n+nn}{math} \PY{k+kn}{import} \PY{n}{cos}\PY{p}{,} \PY{n}{pi}
+         
+         \PY{n}{x} \PY{o}{=} \PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{pi}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1.0
+    \end{Verbatim}
+
+    Although not a very good practice, we can rename the symbols for ease of
+comprehension
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{k+kn}{from} \PY{n+nn}{numpy.linalg} \PY{k+kn}{import} \PY{n}{inv}
+         \PY{k+kn}{from} \PY{n+nn}{scipy.sparse.linalg} \PY{k+kn}{import} \PY{n}{inv} \PY{k}{as} \PY{n}{sparseinv}
+\end{Verbatim}
+
+    \subsubsection{Looking at what a module contains, and its
+documentation}\label{looking-at-what-a-module-contains-and-its-documentation}
+
+Once a module is imported, we can list the symbols it provides using the
+\texttt{dir} function:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{k+kn}{import} \PY{n+nn}{math}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n+nb}{dir}\PY{p}{(}\PY{n}{math}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['\_\_doc\_\_', '\_\_file\_\_', '\_\_name\_\_', '\_\_package\_\_', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
+    \end{Verbatim}
+
+    And using the function \texttt{help} we can get a description of each
+function (almost .. not all functions have docstrings, as they are
+technically called, but the vast majority of functions are documented
+this way).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{help}\PY{p}{(}\PY{n}{math}\PY{o}{.}\PY{n}{log}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on built-in function log in module math:
+
+log(\ldots)
+    log(x[, base])
+    
+    Return the logarithm of x to the given base.
+    If the base not specified, returns the natural logarithm (base e) of x.
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{n}{log}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}33}]:} 2.302585092994046
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{log}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}34}]:} 3.3219280948873626
+\end{Verbatim}
+        
+    We can also use the \texttt{help} function directly on modules: Try
+
+\begin{verbatim}
+help(math) 
+\end{verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{help}\PY{p}{(}\PY{n}{math}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on module math:
+
+NAME
+    math
+
+FILE
+    /home/jpsilva/anaconda/lib/python2.7/lib-dynload/math.so
+
+MODULE DOCS
+    http://docs.python.org/library/math
+
+DESCRIPTION
+    This module is always available.  It provides access to the
+    mathematical functions defined by the C standard.
+
+FUNCTIONS
+    acos(\ldots)
+        acos(x)
+        
+        Return the arc cosine (measured in radians) of x.
+    
+    acosh(\ldots)
+        acosh(x)
+        
+        Return the hyperbolic arc cosine (measured in radians) of x.
+    
+    asin(\ldots)
+        asin(x)
+        
+        Return the arc sine (measured in radians) of x.
+    
+    asinh(\ldots)
+        asinh(x)
+        
+        Return the hyperbolic arc sine (measured in radians) of x.
+    
+    atan(\ldots)
+        atan(x)
+        
+        Return the arc tangent (measured in radians) of x.
+    
+    atan2(\ldots)
+        atan2(y, x)
+        
+        Return the arc tangent (measured in radians) of y/x.
+        Unlike atan(y/x), the signs of both x and y are considered.
+    
+    atanh(\ldots)
+        atanh(x)
+        
+        Return the hyperbolic arc tangent (measured in radians) of x.
+    
+    ceil(\ldots)
+        ceil(x)
+        
+        Return the ceiling of x as a float.
+        This is the smallest integral value >= x.
+    
+    copysign(\ldots)
+        copysign(x, y)
+        
+        Return x with the sign of y.
+    
+    cos(\ldots)
+        cos(x)
+        
+        Return the cosine of x (measured in radians).
+    
+    cosh(\ldots)
+        cosh(x)
+        
+        Return the hyperbolic cosine of x.
+    
+    degrees(\ldots)
+        degrees(x)
+        
+        Convert angle x from radians to degrees.
+    
+    erf(\ldots)
+        erf(x)
+        
+        Error function at x.
+    
+    erfc(\ldots)
+        erfc(x)
+        
+        Complementary error function at x.
+    
+    exp(\ldots)
+        exp(x)
+        
+        Return e raised to the power of x.
+    
+    expm1(\ldots)
+        expm1(x)
+        
+        Return exp(x)-1.
+        This function avoids the loss of precision involved in the direct evaluation of exp(x)-1 for small x.
+    
+    fabs(\ldots)
+        fabs(x)
+        
+        Return the absolute value of the float x.
+    
+    factorial(\ldots)
+        factorial(x) -> Integral
+        
+        Find x!. Raise a ValueError if x is negative or non-integral.
+    
+    floor(\ldots)
+        floor(x)
+        
+        Return the floor of x as a float.
+        This is the largest integral value <= x.
+    
+    fmod(\ldots)
+        fmod(x, y)
+        
+        Return fmod(x, y), according to platform C.  x \% y may differ.
+    
+    frexp(\ldots)
+        frexp(x)
+        
+        Return the mantissa and exponent of x, as pair (m, e).
+        m is a float and e is an int, such that x = m * 2.**e.
+        If x is 0, m and e are both 0.  Else 0.5 <= abs(m) < 1.0.
+    
+    fsum(\ldots)
+        fsum(iterable)
+        
+        Return an accurate floating point sum of values in the iterable.
+        Assumes IEEE-754 floating point arithmetic.
+    
+    gamma(\ldots)
+        gamma(x)
+        
+        Gamma function at x.
+    
+    hypot(\ldots)
+        hypot(x, y)
+        
+        Return the Euclidean distance, sqrt(x*x + y*y).
+    
+    isinf(\ldots)
+        isinf(x) -> bool
+        
+        Check if float x is infinite (positive or negative).
+    
+    isnan(\ldots)
+        isnan(x) -> bool
+        
+        Check if float x is not a number (NaN).
+    
+    ldexp(\ldots)
+        ldexp(x, i)
+        
+        Return x * (2**i).
+    
+    lgamma(\ldots)
+        lgamma(x)
+        
+        Natural logarithm of absolute value of Gamma function at x.
+    
+    log(\ldots)
+        log(x[, base])
+        
+        Return the logarithm of x to the given base.
+        If the base not specified, returns the natural logarithm (base e) of x.
+    
+    log10(\ldots)
+        log10(x)
+        
+        Return the base 10 logarithm of x.
+    
+    log1p(\ldots)
+        log1p(x)
+        
+        Return the natural logarithm of 1+x (base e).
+        The result is computed in a way which is accurate for x near zero.
+    
+    modf(\ldots)
+        modf(x)
+        
+        Return the fractional and integer parts of x.  Both results carry the sign
+        of x and are floats.
+    
+    pow(\ldots)
+        pow(x, y)
+        
+        Return x**y (x to the power of y).
+    
+    radians(\ldots)
+        radians(x)
+        
+        Convert angle x from degrees to radians.
+    
+    sin(\ldots)
+        sin(x)
+        
+        Return the sine of x (measured in radians).
+    
+    sinh(\ldots)
+        sinh(x)
+        
+        Return the hyperbolic sine of x.
+    
+    sqrt(\ldots)
+        sqrt(x)
+        
+        Return the square root of x.
+    
+    tan(\ldots)
+        tan(x)
+        
+        Return the tangent of x (measured in radians).
+    
+    tanh(\ldots)
+        tanh(x)
+        
+        Return the hyperbolic tangent of x.
+    
+    trunc(\ldots)
+        trunc(x:Real) -> Integral
+        
+        Truncates x to the nearest Integral toward 0. Uses the \_\_trunc\_\_ magic method.
+
+DATA
+    e = 2.718281828459045
+    pi = 3.141592653589793
+    \end{Verbatim}
+
+    
+
+    \subsection{Variables and types}\label{variables-and-types}
+
+\subsubsection{Symbol names}\label{symbol-names}
+
+Variable names in Python can contain alphanumerical characters
+\texttt{a-z}, \texttt{A-Z}, \texttt{0-9} and some special characters
+such as \texttt{\_}. Normal variable names must start with a letter.
+
+By convension, variable names start with a lower-case letter, and Class
+names start with a capital letter.
+
+In addition, there are a number of Python keywords that cannot be used
+as variable names. These keywords are:
+
+\begin{verbatim}
+and, as, assert, break, class, continue, def, del, elif, else, except, 
+exec, finally, for, from, global, if, import, in, is, lambda, not, or,
+pass, print, raise, return, try, while, with, yield
+\end{verbatim}
+
+Note: Be aware of the keyword \texttt{lambda}, which could easily be a
+natural variable name in a scientific program. But being a keyword, it
+cannot be used as a variable name.
+
+\subsubsection{Assignment}\label{assignment}
+
+The assignment operator in Python is \texttt{=}. Python is a dynamically
+typed language, so we do not need to specify the type of a variable when
+we create one.
+
+Assigning a value to a new variable creates the variable:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{k+kn}{import} \PY{n+nn}{sys}
+         \PY{k+kn}{import} \PY{n+nn}{keyword}
+         
+         \PY{k}{print} \PY{n}{sys}\PY{o}{.}\PY{n}{version}
+         \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZsq{}}
+         \PY{k}{print}\PY{p}{(}\PY{n}{keyword}\PY{o}{.}\PY{n}{kwlist}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+2.7.8 |Anaconda 2.1.0 (64-bit)| (default, Aug 21 2014, 18:22:21) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]
+
+['and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'exec', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'not', 'or', 'pass', 'print', 'raise', 'return', 'try', 'while', 'with', 'yield']
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{c}{\PYZsh{} variable assignments}
+         \PY{n}{x} \PY{o}{=} \PY{l+m+mf}{1.0}
+         \PY{n}{my\PYZus{}variable} \PY{o}{=} \PY{l+m+mf}{12.2}
+\end{Verbatim}
+
+    Although not explicitly specified, a variable do have a type associated
+with it. The type is derived from the value it was assigned.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}38}]:} float
+\end{Verbatim}
+        
+    If we assign a new value to a variable, its type can change.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{n}{x} \PY{o}{=} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}40}]:} int
+\end{Verbatim}
+        
+    If we try to use a variable that has not yet been defined we get an
+\texttt{NameError}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{k}{print}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+    NameError                                 Traceback (most recent call last)
+
+        <ipython-input-41-36b2093251cd> in <module>()
+    ----> 1 print(y)
+    
+
+        NameError: name 'y' is not defined
+
+    \end{Verbatim}
+
+    
+
+    \subsubsection{Fundamental types}\label{fundamental-types}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{c}{\PYZsh{} integers}
+         \PY{n}{x} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{n+nb}{type}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}42}]:} int
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{c}{\PYZsh{} float}
+         \PY{n}{x} \PY{o}{=} \PY{l+m+mf}{1.0}
+         \PY{n+nb}{type}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}43}]:} float
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{c}{\PYZsh{} boolean}
+         \PY{n}{b1} \PY{o}{=} \PY{n+nb+bp}{True}
+         \PY{n}{b2} \PY{o}{=} \PY{n+nb+bp}{False}
+         
+         \PY{n+nb}{type}\PY{p}{(}\PY{n}{b1}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}44}]:} bool
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{c}{\PYZsh{} complex numbers: note the use of `j` to specify the imaginary part}
+         \PY{n}{x} \PY{o}{=} \PY{l+m+mf}{1.0} \PY{o}{\PYZhy{}} \PY{l+m+mf}{1.0j}
+         \PY{n+nb}{type}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}45}]:} complex
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(1-1j)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{o}{.}\PY{n}{real}\PY{p}{,} \PY{n}{x}\PY{o}{.}\PY{n}{imag}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(1.0, -1.0)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:} \PY{k+kn}{import} \PY{n+nn}{types}
+         
+         \PY{c}{\PYZsh{} print all types defined in the `types` module}
+         \PY{k}{print}\PY{p}{(}\PY{n+nb}{dir}\PY{p}{(}\PY{n}{types}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['BooleanType', 'BufferType', 'BuiltinFunctionType', 'BuiltinMethodType', 'ClassType', 'CodeType', 'ComplexType', 'DictProxyType', 'DictType', 'DictionaryType', 'EllipsisType', 'FileType', 'FloatType', 'FrameType', 'FunctionType', 'GeneratorType', 'GetSetDescriptorType', 'InstanceType', 'IntType', 'LambdaType', 'ListType', 'LongType', 'MemberDescriptorType', 'MethodType', 'ModuleType', 'NoneType', 'NotImplementedType', 'ObjectType', 'SliceType', 'StringType', 'StringTypes', 'TracebackType', 'TupleType', 'TypeType', 'UnboundMethodType', 'UnicodeType', 'XRangeType', '\_\_builtins\_\_', '\_\_doc\_\_', '\_\_file\_\_', '\_\_name\_\_', '\_\_package\_\_']
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{n}{x} \PY{o}{=} \PY{l+m+mf}{1.0}
+         
+         \PY{c}{\PYZsh{} check if the variable x is a float}
+         \PY{n+nb}{type}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{o+ow}{is} \PY{n+nb}{float}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}49}]:} True
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}50}]:} \PY{c}{\PYZsh{} check if the variable x is an int}
+         \PY{n+nb}{type}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{o+ow}{is} \PY{n+nb}{int}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}50}]:} False
+\end{Verbatim}
+        
+    We can also use the \texttt{isinstance} method for testing types of
+variables:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}51}]:} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n+nb}{float}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}51}]:} True
+\end{Verbatim}
+        
+    \subsubsection{Type casting}\label{type-casting}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{n}{x} \PY{o}{=} \PY{l+m+mf}{1.5}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(1.5, <type 'float'>)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}53}]:} \PY{n}{x} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(1, <type 'int'>)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}54}]:} \PY{n}{z} \PY{o}{=} \PY{n+nb}{complex}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{z}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{z}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+((1+0j), <type 'complex'>)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}55}]:} \PY{n}{x} \PY{o}{=} \PY{n+nb}{float}\PY{p}{(}\PY{n}{z}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+
+        <ipython-input-55-e719cc7b3e96> in <module>()
+    ----> 1 x = float(z)
+    
+
+        TypeError: can't convert complex to float
+
+    \end{Verbatim}
+
+    Complex variables cannot be cast to floats or integers. We need to use
+\texttt{z.real} or \texttt{z.imag} to extract the part of the complex
+number we want:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}56}]:} \PY{n}{y} \PY{o}{=} \PY{n+nb}{bool}\PY{p}{(}\PY{n}{z}\PY{o}{.}\PY{n}{real}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{z}\PY{o}{.}\PY{n}{real}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{ \PYZhy{}\PYZgt{} }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{y} \PY{o}{=} \PY{n+nb}{bool}\PY{p}{(}\PY{n}{z}\PY{o}{.}\PY{n}{imag}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{z}\PY{o}{.}\PY{n}{imag}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{ \PYZhy{}\PYZgt{} }\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(1.0, ' -> ', True, <type 'bool'>)
+(0.0, ' -> ', False, <type 'bool'>)
+    \end{Verbatim}
+
+    
+
+    \subsection{Operators and comparisons}\label{operators-and-comparisons}
+
+Most operators and comparisons in Python work as one would expect:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Arithmetic operators \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/},
+  \texttt{//} (integer division), '**' power
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}57}]:} \PY{l+m+mi}{1} \PY{o}{+} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1} \PY{o}{*} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1} \PY{o}{/} \PY{l+m+mi}{2}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}57}]:} (3, -1, 2, 0)
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}58}]:} \PY{l+m+mf}{1.0} \PY{o}{+} \PY{l+m+mf}{2.0}\PY{p}{,} \PY{l+m+mf}{1.0} \PY{o}{\PYZhy{}} \PY{l+m+mf}{2.0}\PY{p}{,} \PY{l+m+mf}{1.0} \PY{o}{*} \PY{l+m+mf}{2.0}\PY{p}{,} \PY{l+m+mf}{1.0} \PY{o}{/} \PY{l+m+mf}{2.0}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}58}]:} (3.0, -1.0, 2.0, 0.5)
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}59}]:} \PY{l+m+mf}{3.0} \PY{o}{/}\PY{o}{/} \PY{l+m+mf}{2.0}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}59}]:} 1.0
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}60}]:} \PY{l+m+mi}{2} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{2}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}60}]:} 4
+\end{Verbatim}
+        
+    \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  The boolean operators are spelled out as words \texttt{and},
+  \texttt{not}, \texttt{or}.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}61}]:} \PY{n+nb+bp}{True} \PY{o+ow}{and} \PY{n+nb+bp}{False}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}61}]:} False
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}62}]:} \PY{o+ow}{not} \PY{n+nb+bp}{False}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}62}]:} True
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}63}]:} \PY{n+nb+bp}{True} \PY{o+ow}{or} \PY{n+nb+bp}{False}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}63}]:} True
+\end{Verbatim}
+        
+    \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Comparison operators \texttt{\textgreater{}}, \texttt{\textless{}},
+  \texttt{\textgreater{}=} (greater or equal), \texttt{\textless{}=}
+  (less or equal), \texttt{==} equality, \texttt{is} identical.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}64}]:} \PY{l+m+mi}{2} \PY{o}{\PYZgt{}} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2} \PY{o}{\PYZlt{}} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}64}]:} (True, False)
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}65}]:} \PY{l+m+mi}{2} \PY{o}{\PYZgt{}} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2} \PY{o}{\PYZlt{}} \PY{l+m+mi}{2}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}65}]:} (False, False)
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}66}]:} \PY{l+m+mi}{2} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{2}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}66}]:} (True, True)
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}67}]:} \PY{c}{\PYZsh{} equality}
+         \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{==} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}67}]:} True
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}68}]:} \PY{c}{\PYZsh{} objects identical?}
+         \PY{n}{l1} \PY{o}{=} \PY{n}{l2} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}
+         
+         \PY{n}{l1} \PY{o+ow}{is} \PY{n}{l2}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}68}]:} True
+\end{Verbatim}
+        
+    
+
+    \subsection{Compound types: Strings, List and
+dictionaries}\label{compound-types-strings-list-and-dictionaries}
+
+\subsubsection{Strings}\label{strings}
+
+Strings are the variable type that is used for storing text messages.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}69}]:} \PY{n}{s} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{Hello world}\PY{l+s}{\PYZdq{}}
+         \PY{n+nb}{type}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}69}]:} str
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}70}]:} \PY{c}{\PYZsh{} length of the string: the number of characters}
+         \PY{n+nb}{len}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}70}]:} 11
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}71}]:} \PY{c}{\PYZsh{} replace a substring in a string with somethign else}
+         \PY{n}{s2} \PY{o}{=} \PY{n}{s}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{world}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{test}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{s2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Hello test
+    \end{Verbatim}
+
+    We can index a character in a string using \texttt{{[}{]}}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}72}]:} \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}72}]:} 'H'
+\end{Verbatim}
+        
+    We can extract a part of a string using the syntax
+\texttt{{[}start:stop{]}}, which extracts characters between index
+\texttt{start} and \texttt{stop}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}73}]:} \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}73}]:} 'Hello'
+\end{Verbatim}
+        
+    If we omit either (or both) of \texttt{start} or \texttt{stop} from
+\texttt{{[}start:stop{]}}, the default is the beginning and the end of
+the string, respectively:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}74}]:} \PY{n}{s}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}74}]:} 'Hello'
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}75}]:} \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{:}\PY{p}{]}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}75}]:} 'world'
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}76}]:} \PY{n}{s}\PY{p}{[}\PY{p}{:}\PY{p}{]}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}76}]:} 'Hello world'
+\end{Verbatim}
+        
+    We can also define the step size using the syntax
+\texttt{{[}start:end:step{]}} (the default value for \texttt{step} is 1,
+as we saw above):
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}77}]:} \PY{n}{s}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{1}\PY{p}{]}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}77}]:} 'Hello world'
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}78}]:} \PY{n}{s}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}78}]:} 'Hlowrd'
+\end{Verbatim}
+        
+    \paragraph{String formatting examples}\label{string-formatting-examples}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}79}]:} \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{str1}\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{l+s}{\PYZdq{}}\PY{l+s}{str2}\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{l+s}{\PYZdq{}}\PY{l+s}{str3}\PY{l+s}{\PYZdq{}}\PY{p}{)} \PY{c}{\PYZsh{} strings added with + are concatenated without space}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+str1str2str3
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}80}]:} \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{value = }\PY{l+s+si}{\PYZpc{}f}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{l+m+mf}{1.0}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+value = 1.000000
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}81}]:} \PY{n}{s2} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{value1 = }\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{ value2 = }\PY{l+s+si}{\PYZpc{}d}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{l+m+mf}{3.1415}\PY{p}{,} \PY{l+m+mf}{1.5}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{s2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+value1 = 3.14 value2 = 1
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}82}]:} \PY{n}{s3} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{value1 = \PYZob{}0\PYZcb{}, value2 = \PYZob{}1\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mf}{3.1415}\PY{p}{,} \PY{l+m+mf}{1.5}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{s3}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+value1 = 3.1415, value2 = 1.5
+    \end{Verbatim}
+
+    \subsubsection{List}\label{list}
+
+Lists are very similar to strings, except that each element can be of
+any type.
+
+The syntax for creating lists in Python is \texttt{{[}...{]}}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}83}]:} \PY{n}{l} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n+nb}{type}\PY{p}{(}\PY{n}{l}\PY{p}{)}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<type 'list'>
+[1, 2, 3, 4]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}84}]:} \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[1, 2, 3, 4]
+[2, 3]
+[1, 3]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}85}]:} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}85}]:} 1
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}86}]:} \PY{n}{l} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{a}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1j}\PY{p}{]}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[1, 'a', 1.0, (1-1j)]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}87}]:} \PY{n}{start} \PY{o}{=} \PY{l+m+mi}{10}
+         \PY{n}{stop} \PY{o}{=} \PY{l+m+mi}{30}
+         \PY{n}{step} \PY{o}{=} \PY{l+m+mi}{2}
+         
+         \PY{n+nb}{range}\PY{p}{(}\PY{n}{start}\PY{p}{,} \PY{n}{stop}\PY{p}{,} \PY{n}{step}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}87}]:} [10, 12, 14, 16, 18, 20, 22, 24, 26, 28]
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}88}]:} \PY{n+nb}{list}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}88}]:} [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}89}]:} \PY{n}{s}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}89}]:} 'Hello world'
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}90}]:} \PY{c}{\PYZsh{} convert a string to a list:}
+         
+         \PY{n}{s2} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+         
+         \PY{n}{s2}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}90}]:} ['H', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}91}]:} \PY{c}{\PYZsh{} sorting lists}
+         \PY{n}{s2}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{s2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[' ', 'H', 'd', 'e', 'l', 'l', 'l', 'o', 'o', 'r', 'w']
+    \end{Verbatim}
+
+    \paragraph{Adding, inserting, modifying, and removing elements from
+lists}\label{adding-inserting-modifying-and-removing-elements-from-lists}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}94}]:} \PY{c}{\PYZsh{} create a new empty list}
+         \PY{n}{l} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+         
+         \PY{c}{\PYZsh{} add an elements using `append`}
+         \PY{n}{l}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{A}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{l}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{d}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{l}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{d}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['A', 'd', 'd']
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}95}]:} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{p}\PY{l+s}{\PYZdq{}}
+         \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{p}\PY{l+s}{\PYZdq{}}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['A', 'p', 'p']
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}96}]:} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{d}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{d}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['A', 'd', 'd']
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}97}]:} \PY{n}{l}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{i}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{l}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{n}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{l}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{s}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{l}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{e}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{l}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{r}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{l}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{t}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['i', 'n', 's', 'e', 'r', 't', 'A', 'd', 'd']
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}98}]:} \PY{n}{l}\PY{o}{.}\PY{n}{remove}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{A}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['i', 'n', 's', 'e', 'r', 't', 'd', 'd']
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}99}]:} \PY{k}{del} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]}
+         \PY{k}{del} \PY{n}{l}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]}
+         
+         \PY{k}{print}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+['i', 'n', 's', 'e', 'r', 't']
+    \end{Verbatim}
+
+    \subsubsection{Tuples}\label{tuples}
+
+Tuples are like lists, except that they cannot be modified once created,
+that is they are \emph{immutable}.
+
+In Python, tuples are created using the syntax \texttt{(..., ..., ...)},
+or even \texttt{..., ...}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}100}]:} \PY{n}{point} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}
+          
+          \PY{k}{print}\PY{p}{(}\PY{n}{point}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{point}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+((10, 20), <type 'tuple'>)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}101}]:} \PY{n}{point} \PY{o}{=} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{20}
+          
+          \PY{k}{print}\PY{p}{(}\PY{n}{point}\PY{p}{,} \PY{n+nb}{type}\PY{p}{(}\PY{n}{point}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+((10, 20), <type 'tuple'>)
+    \end{Verbatim}
+
+    We can unpack a tuple by assigning it to a comma-separated list of
+variables:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}102}]:} \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{n}{point}
+          
+          \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{x =}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{y =}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+('x =', 10)
+('y =', 20)
+    \end{Verbatim}
+
+    If we try to assign a new value to an element in a tuple we get an
+error:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}103}]:} \PY{n}{point}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{20}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+
+        <ipython-input-103-ac1c641a5dca> in <module>()
+    ----> 1 point[0] = 20
+    
+
+        TypeError: 'tuple' object does not support item assignment
+
+    \end{Verbatim}
+
+    \subsubsection{Dictionaries}\label{dictionaries}
+
+Dictionaries are also like lists, except that each element is a
+key-value pair. The syntax for dictionaries is
+\texttt{\{key1 : value1, ...\}}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}104}]:} \PY{n}{params} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter1}\PY{l+s}{\PYZdq{}} \PY{p}{:} \PY{l+m+mf}{1.0}\PY{p}{,}
+                    \PY{l+s}{\PYZdq{}}\PY{l+s}{parameter2}\PY{l+s}{\PYZdq{}} \PY{p}{:} \PY{l+m+mf}{2.0}\PY{p}{,}
+                    \PY{l+s}{\PYZdq{}}\PY{l+s}{parameter3}\PY{l+s}{\PYZdq{}} \PY{p}{:} \PY{l+m+mf}{3.0}\PY{p}{,}\PY{p}{\PYZcb{}}
+          
+          \PY{k}{print}\PY{p}{(}\PY{n+nb}{type}\PY{p}{(}\PY{n}{params}\PY{p}{)}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{n}{params}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<type 'dict'>
+\{'parameter1': 1.0, 'parameter3': 3.0, 'parameter2': 2.0\}
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}105}]:} \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter1 = }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{params}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter1}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter2 = }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{params}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter2}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter3 = }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{params}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter3}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+parameter1 = 1.0
+parameter2 = 2.0
+parameter3 = 3.0
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}106}]:} \PY{n}{params}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter1}\PY{l+s}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{A}\PY{l+s}{\PYZdq{}}
+          \PY{n}{params}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter2}\PY{l+s}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{B}\PY{l+s}{\PYZdq{}}
+          
+          \PY{c}{\PYZsh{} add a new entry}
+          \PY{n}{params}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter4}\PY{l+s}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{D}\PY{l+s}{\PYZdq{}}
+          
+          \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter1 = }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{params}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter1}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter2 = }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{params}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter2}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter3 = }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{params}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter3}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter4 = }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{params}\PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{parameter4}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+parameter1 = A
+parameter2 = B
+parameter3 = 3.0
+parameter4 = D
+    \end{Verbatim}
+
+    
+
+    \subsection{Control Flow}\label{control-flow}
+
+    \subsubsection{Conditional statements: if, elif,
+else}\label{conditional-statements-if-elif-else}
+
+The Python syntax for conditional execution of code use the keywords
+\texttt{if}, \texttt{elif} (else if), \texttt{else}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}107}]:} \PY{n}{statement1} \PY{o}{=} \PY{n+nb+bp}{False}
+          \PY{n}{statement2} \PY{o}{=} \PY{n+nb+bp}{False}
+          
+          \PY{k}{if} \PY{n}{statement1}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{statement1 is True}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+              
+          \PY{k}{elif} \PY{n}{statement2}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{statement2 is True}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+              
+          \PY{k}{else}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{statement1 and statement2 are False}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+statement1 and statement2 are False
+    \end{Verbatim}
+
+    In Python, the extent of a code block is defined by the indentation
+level (usually a tab or say four white spaces). This means that we have
+to be careful to indent our code correctly, or else we will get syntax
+errors.
+
+\textbf{Examples:}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}108}]:} \PY{n}{statement1} \PY{o}{=} \PY{n}{statement2} \PY{o}{=} \PY{n+nb+bp}{True}
+          
+          \PY{k}{if} \PY{n}{statement1}\PY{p}{:}
+              \PY{k}{if} \PY{n}{statement2}\PY{p}{:}
+                  \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{both statement1 and statement2 are True}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+both statement1 and statement2 are True
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}109}]:} \PY{c}{\PYZsh{} Bad indentation!}
+          \PY{k}{if} \PY{n}{statement1}\PY{p}{:}
+              \PY{k}{if} \PY{n}{statement2}\PY{p}{:}
+                  \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{both statement1 and statement2 are True}\PY{l+s}{\PYZdq{}}\PY{p}{)}  \PY{c}{\PYZsh{} this line is not properly indented}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+both statement1 and statement2 are True
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}110}]:} \PY{n}{statement1} \PY{o}{=} \PY{n+nb+bp}{False} 
+          
+          \PY{k}{if} \PY{n}{statement1}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{printed if statement1 is True}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+              
+              \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{still inside the if block}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}111}]:} \PY{k}{if} \PY{n}{statement1}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{printed if statement1 is True}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+              
+          \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{now outside the if block}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+now outside the if block
+    \end{Verbatim}
+
+    
+
+    \subsection{Loops}\label{loops}
+
+In Python, loops can be programmed in a number of different ways. The
+most common is the \texttt{for} loop, which is used together with
+iterable objects, such as lists. The basic syntax is:
+
+\textbf{\texttt{for} loops}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}112}]:} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1
+2
+3
+    \end{Verbatim}
+
+    The \texttt{for} loop iterates over the elements of the supplied list,
+and executes the containing block once for each element. Any kind of
+list can be used in the \texttt{for} loop. For example:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}113}]:} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:} \PY{c}{\PYZsh{} by default range start at 0}
+              \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+1
+2
+3
+    \end{Verbatim}
+
+    Note: \texttt{range(4)} does not include 4 !
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}114}]:} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+-3
+-2
+-1
+0
+1
+2
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}115}]:} \PY{k}{for} \PY{n}{word} \PY{o+ow}{in} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{scientific}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{computing}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{with}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{python}\PY{l+s}{\PYZdq{}}\PY{p}{]}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{n}{word}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+scientific
+computing
+with
+python
+    \end{Verbatim}
+
+    To iterate over key-value pairs of a dictionary:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}116}]:} \PY{k}{for} \PY{n}{key}\PY{p}{,} \PY{n}{value} \PY{o+ow}{in} \PY{n}{params}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{n}{key} \PY{o}{+} \PY{l+s}{\PYZdq{}}\PY{l+s}{ = }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+parameter4 = D
+parameter1 = A
+parameter3 = 3.0
+parameter2 = B
+    \end{Verbatim}
+
+    Sometimes it is useful to have access to the indices of the values when
+iterating over a list. We can use the \texttt{enumerate} function for
+this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}117}]:} \PY{k}{for} \PY{n}{idx}\PY{p}{,} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{n}{idx}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(0, -3)
+(1, -2)
+(2, -1)
+(3, 0)
+(4, 1)
+(5, 2)
+    \end{Verbatim}
+
+    \textbf{List comprehensions: Creating lists using \texttt{for} loops}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}118}]:} \PY{n}{l1} \PY{o}{=} \PY{p}{[}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{]}
+          
+          \PY{k}{print}\PY{p}{(}\PY{n}{l1}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[0, 1, 4, 9, 16]
+    \end{Verbatim}
+
+    \textbf{\texttt{while} loops}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}119}]:} \PY{n}{i} \PY{o}{=} \PY{l+m+mi}{0}
+          
+          \PY{k}{while} \PY{n}{i} \PY{o}{\PYZlt{}} \PY{l+m+mi}{5}\PY{p}{:}
+              \PY{k}{print}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+              
+              \PY{n}{i} \PY{o}{=} \PY{n}{i} \PY{o}{+} \PY{l+m+mi}{1}
+              
+          \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{done}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+1
+2
+3
+4
+done
+    \end{Verbatim}
+
+    
+
+    \subsection{Functions}\label{functions}
+
+A function in Python is defined using the keyword \texttt{def}, followed
+by a function name, a signature within parenthises \texttt{()}, and a
+colon \texttt{:}. The following code, with one additional level of
+indentation, is the function body.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}120}]:} \PY{k}{def} \PY{n+nf}{func0}\PY{p}{(}\PY{p}{)}\PY{p}{:}   
+              \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{test}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}121}]:} \PY{n}{func0}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+test
+    \end{Verbatim}
+
+    Optionally, but highly recommended, we can define a so called
+``docstring'', which is a description of the functions purpose and
+behavior. The docstring should be located after the function definition
+and before the code in the function body.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}122}]:} \PY{k}{def} \PY{n+nf}{func1}\PY{p}{(}\PY{n}{s}\PY{p}{)}\PY{p}{:}
+              \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{    Print a string \PYZsq{}s\PYZsq{} and tell how many characters it has    }
+          \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+              
+              \PY{k}{print}\PY{p}{(}\PY{n}{s} \PY{o}{+} \PY{l+s}{\PYZdq{}}\PY{l+s}{ has }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{s}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZdq{}}\PY{l+s}{ characters}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}123}]:} \PY{n}{help}\PY{p}{(}\PY{n}{func1}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on function func1 in module \_\_main\_\_:
+
+func1(s)
+    Print a string 's' and tell how many characters it has
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}124}]:} \PY{n}{func1}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{test}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+test has 4 characters
+    \end{Verbatim}
+
+    Functions that returns a value use the \texttt{return} keyword:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}125}]:} \PY{k}{def} \PY{n+nf}{square}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+              \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{    Return the square of x.}
+          \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+              \PY{k}{return} \PY{n}{x} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{2}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}126}]:} \PY{n}{square}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}126}]:} 16
+\end{Verbatim}
+        
+    We can return multiple values from a function using tuples (see above):
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}127}]:} \PY{k}{def} \PY{n+nf}{powers}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+              \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{    Return a few powers of x.}
+          \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+              \PY{k}{return} \PY{n}{x} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{x} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{3}\PY{p}{,} \PY{n}{x} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{4}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}128}]:} \PY{n}{powers}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}128}]:} (9, 27, 81)
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}129}]:} \PY{n}{x2}\PY{p}{,} \PY{n}{x3}\PY{p}{,} \PY{n}{x4} \PY{o}{=} \PY{n}{powers}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+          
+          \PY{k}{print}\PY{p}{(}\PY{n}{x3}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+27
+    \end{Verbatim}
+
+    \subsubsection{Default argument and keyword
+arguments}\label{default-argument-and-keyword-arguments}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}130}]:} \PY{k}{def} \PY{n+nf}{myfunc}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{p}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{debug}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}\PY{p}{:}
+              \PY{k}{if} \PY{n}{debug}\PY{p}{:}
+                  \PY{k}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{evaluating myfunc for x = }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{x}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZdq{}}\PY{l+s}{ using exponent p = }\PY{l+s}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{p}\PY{p}{)}\PY{p}{)}
+              \PY{k}{return} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{n}{p}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}131}]:} \PY{n}{myfunc}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}131}]:} 25
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}132}]:} \PY{n}{myfunc}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{debug}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+evaluating myfunc for x = 5 using exponent p = 2
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}132}]:} 25
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}133}]:} \PY{n}{myfunc}\PY{p}{(}\PY{n}{p}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{debug}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{x}\PY{o}{=}\PY{l+m+mi}{7}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+evaluating myfunc for x = 7 using exponent p = 3
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}133}]:} 343
+\end{Verbatim}
+        
+    \subsubsection{Unnamed functions (lambda
+function)}\label{unnamed-functions-lambda-function}
+
+In Python we can also create unnamed functions, using the
+\texttt{lambda} keyword:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}134}]:} \PY{n}{f1} \PY{o}{=} \PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+              
+          \PY{c}{\PYZsh{} is equivalent to }
+          
+          \PY{k}{def} \PY{n+nf}{f2}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}135}]:} \PY{n}{f1}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n}{f2}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}135}]:} (4, 4)
+\end{Verbatim}
+        
+    This technique is useful for exmample when we want to pass a simple
+function as an argument to another function, like this:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}136}]:} \PY{c}{\PYZsh{} map is a built\PYZhy{}in python function}
+          \PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n+nb}{range}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}136}]:} [9, 4, 1, 0, 1, 4, 9]
+\end{Verbatim}
+        
+    
+
+    \subsection{Classes}\label{classes}
+
+Classes are the key features of object-oriented programming. A class is
+a structure for representing an object and the operations that can be
+performed on the object.
+
+In Python a class can contain \emph{attributes} (variables) and
+\emph{methods} (functions).
+
+In python a class is defined almost like a function, but using the
+\texttt{class} keyword, and the class definition usually contains a
+number of class method definitions (a function in a class).
+
+\begin{itemize}
+\item
+  Each class method should have an argument \texttt{self} as it first
+  argument. This object is a self-reference.
+\item
+  Some class method names have special meaning, for example:
+\item
+  \texttt{\_\_init\_\_}: The name of the method that is invoked when the
+  object is first created.
+\item
+  \texttt{\_\_str\_\_} : A method that is invoked when a simple string
+  representation of the class is needed, as for example when printed.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}137}]:} \PY{k}{class} \PY{n+nc}{Point}\PY{p}{:}
+              \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{    Simple class for representing a point in a Cartesian coordinate system.}
+          \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+              
+              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
+                  \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{        Create a new Point at x, y.}
+          \PY{l+s+sd}{        \PYZdq{}\PYZdq{}\PYZdq{}}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{x} \PY{o}{=} \PY{n}{x}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{y} \PY{o}{=} \PY{n}{y}
+                  
+              \PY{k}{def} \PY{n+nf}{translate}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{dx}\PY{p}{,} \PY{n}{dy}\PY{p}{)}\PY{p}{:}
+                  \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{        Translate the point by dx and dy in the x and y direction.}
+          \PY{l+s+sd}{        \PYZdq{}\PYZdq{}\PYZdq{}}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{x} \PY{o}{+}\PY{o}{=} \PY{n}{dx}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{y} \PY{o}{+}\PY{o}{=} \PY{n}{dy}
+                  
+              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}str\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                  \PY{k}{return}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Point at [}\PY{l+s+si}{\PYZpc{}f}\PY{l+s}{, }\PY{l+s+si}{\PYZpc{}f}\PY{l+s}{]}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{x}\PY{p}{,} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{y}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    To create a new instance of a class:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}138}]:} \PY{n}{p1} \PY{o}{=} \PY{n}{Point}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)} \PY{c}{\PYZsh{} this will invoke the \PYZus{}\PYZus{}init\PYZus{}\PYZus{} method in the Point class}
+          
+          \PY{k}{print}\PY{p}{(}\PY{n}{p1}\PY{p}{)}         \PY{c}{\PYZsh{} this will invoke the \PYZus{}\PYZus{}str\PYZus{}\PYZus{} method}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Point at [0.000000, 0.000000]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}139}]:} \PY{n}{p2} \PY{o}{=} \PY{n}{Point}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+          
+          \PY{n}{p1}\PY{o}{.}\PY{n}{translate}\PY{p}{(}\PY{l+m+mf}{0.25}\PY{p}{,} \PY{l+m+mf}{1.5}\PY{p}{)}
+          
+          \PY{k}{print}\PY{p}{(}\PY{n}{p1}\PY{p}{)}
+          \PY{k}{print}\PY{p}{(}\PY{n}{p2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Point at [0.250000, 1.500000]
+Point at [1.000000, 1.000000]
+    \end{Verbatim}
+
+    \subsection{Modules}\label{modules}
+
+One of the most important concepts in good programming is to reuse code
+and avoid repetitions.
+
+Consider the following example: the file \texttt{mymodule.py} contains
+simple example implementations of a variable, function and a class:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}140}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{file} \PY{n}{mymodule}\PY{o}{.}\PY{n}{py}
+          \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{Example of a python module. Contains a variable called my\PYZus{}variable,}
+          \PY{l+s+sd}{a function called my\PYZus{}function, and a class called MyClass.}
+          \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          
+          \PY{n}{my\PYZus{}variable} \PY{o}{=} \PY{l+m+mi}{0}
+          
+          \PY{k}{def} \PY{n+nf}{my\PYZus{}function}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{    Example function}
+          \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+              \PY{k}{return} \PY{n}{my\PYZus{}variable}
+              
+          \PY{k}{class} \PY{n+nc}{MyClass}\PY{p}{:}
+              \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{    Example class.}
+          \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+          
+              \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{variable} \PY{o}{=} \PY{n}{my\PYZus{}variable}
+                  
+              \PY{k}{def} \PY{n+nf}{set\PYZus{}variable}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{new\PYZus{}value}\PY{p}{)}\PY{p}{:}
+                  \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+          \PY{l+s+sd}{        Set self.variable to a new value}
+          \PY{l+s+sd}{        \PYZdq{}\PYZdq{}\PYZdq{}}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{variable} \PY{o}{=} \PY{n}{new\PYZus{}value}
+                  
+              \PY{k}{def} \PY{n+nf}{get\PYZus{}variable}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                  \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{variable}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Writing mymodule.py
+    \end{Verbatim}
+
+    We can import the module \texttt{mymodule} into our Python program using
+\texttt{import}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}141}]:} \PY{k+kn}{import} \PY{n+nn}{mymodule}
+\end{Verbatim}
+
+    Use \texttt{help(module)} to get a summary of what the module provides:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}142}]:} \PY{n}{help}\PY{p}{(}\PY{n}{mymodule}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on module mymodule:
+
+NAME
+    mymodule
+
+FILE
+    /home/jpsilva/Lisbon1214/notebooks/mymodule.py
+
+DESCRIPTION
+    Example of a python module. Contains a variable called my\_variable,
+    a function called my\_function, and a class called MyClass.
+
+CLASSES
+    MyClass
+    
+    class MyClass
+     |  Example class.
+     |  
+     |  Methods defined here:
+     |  
+     |  \_\_init\_\_(self)
+     |  
+     |  get\_variable(self)
+     |  
+     |  set\_variable(self, new\_value)
+     |      Set self.variable to a new value
+
+FUNCTIONS
+    my\_function()
+        Example function
+
+DATA
+    my\_variable = 0
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}143}]:} \PY{n}{mymodule}\PY{o}{.}\PY{n}{my\PYZus{}variable}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}143}]:} 0
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}144}]:} \PY{n}{mymodule}\PY{o}{.}\PY{n}{my\PYZus{}function}\PY{p}{(}\PY{p}{)} 
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}144}]:} 0
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}145}]:} \PY{n}{my\PYZus{}class} \PY{o}{=} \PY{n}{mymodule}\PY{o}{.}\PY{n}{MyClass}\PY{p}{(}\PY{p}{)} 
+          \PY{n}{my\PYZus{}class}\PY{o}{.}\PY{n}{set\PYZus{}variable}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+          \PY{n}{my\PYZus{}class}\PY{o}{.}\PY{n}{get\PYZus{}variable}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}145}]:} 10
+\end{Verbatim}
+        
+    If we make changes to the code in \texttt{mymodule.py}, we need to
+reload it using \texttt{reload}:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}146}]:} \PY{n+nb}{reload}\PY{p}{(}\PY{n}{mymodule}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}146}]:} <module 'mymodule' from 'mymodule.pyc'>
+\end{Verbatim}
+        
+    \subsubsection{Versions}\label{versions}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}147}]:} \PY{o}{\PYZpc{}}\PY{k}{reload\PYZus{}ext} \PY{n}{version\PYZus{}information}
+          
+          \PY{o}{\PYZpc{}}\PY{k}{version\PYZus{}information} \PY{n}{math}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}147}]:}
+    
+    \begin{tabular}{|l|l|}\hline
+{\bf Software} & {\bf Version} \\ \hline\hline
+Python & 2.7.8 |Anaconda 2.1.0 (64-bit)| (default, Aug 21 2014, 18:22:21) [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] \\ \hline
+IPython & 2.3.0 \\ \hline
+OS & posix [linux2] \\ \hline
+math & 'module' object has no attribute '__version__' \\ \hline
+\hline \multicolumn{2}{|l|}{Fri Dec 05 09:59:20 2014 CET} \\ \hline
+\end{tabular}
+
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}148}]:} \PY{o}{\PYZpc{}}\PY{k}{who}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+HTML	 Point	 acos	 acosh	 asin	 asinh	 atan	 atan2	 atanh	 
+b1	 b2	 ceil	 copysign	 cos	 cosh	 css\_styling	 degrees	 e	 
+erf	 erfc	 exp	 expm1	 f1	 f2	 fabs	 factorial	 floor	 
+fmod	 frexp	 fsum	 func0	 func1	 gamma	 hypot	 i	 idx	 
+inv	 isinf	 isnan	 key	 keyword	 l	 l1	 l2	 ldexp	 
+lgamma	 log	 log10	 log1p	 math	 modf	 my\_class	 my\_variable	 myfunc	 
+mymodule	 p1	 p2	 params	 pi	 point	 pow	 powers	 radians	 
+s	 s2	 s3	 script\_dir	 sin	 sinh	 sparseinv	 sqrt	 square	 
+start	 statement1	 statement2	 step	 stop	 sys	 tan	 tanh	 trunc	 
+types	 value	 word	 x	 x2	 x3	 x4	 y	 z
+    \end{Verbatim}
+
+    We can find more information about IPython capabilities in
+\href{https://github.com/ipython/ipython/tree/1.x/examples/notebooks}{IPython
+example notebooks}
+
+    \emph{The full notebook can be downloaded}
+\href{https://raw.github.com/PoeticCapybara/Python-Introduction-Zittau/master/Lecture-1-Introduction-to-Python.ipynb}{\emph{here}},
+\emph{or viewed statically on}
+\href{http://nbviewer.ipython.org/urls/raw.github.com/PoeticCapybara/Python-Introduction-Zittau/master/Lecture-1-Introduction-to-Python.ipynb}{\emph{nbviewer}}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}149}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.core.display} \PY{k+kn}{import} \PY{n}{HTML}
+          \PY{k}{def} \PY{n+nf}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+              \PY{n}{styles} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{./styles/custom.css}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{r}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+              \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{styles}\PY{p}{)}
+          \PY{n}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}149}]:} <IPython.core.display.HTML at 0x7faefcf17990>
+\end{Verbatim}
+        
+    \hyperref[Index]{Back to top}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

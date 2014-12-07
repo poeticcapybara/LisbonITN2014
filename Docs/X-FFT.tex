@@ -1,0 +1,726 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{X-FFT}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{X-\href{http://www.ams.org/journals/mcom/1965-19-090/S0025-5718-1965-0178586-1/}{FFT}
+- Fast Fourier Transform}\label{x-fft---fast-fourier-transform}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.display} \PY{k+kn}{import} \PY{n}{HTML}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{HTML}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{http://www.ams.org/journals/mcom/1965\PYZhy{}19\PYZhy{}090/S0025\PYZhy{}5718\PYZhy{}1965\PYZhy{}0178586\PYZhy{}1/}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} <IPython.core.display.HTML at 0x7f27b419fa90>
+\end{Verbatim}
+        
+    There are several FFT implementations in python. We will use the NumPy
+and SciPy ones. The fastest is
+\href{https://pypi.python.org/pypi/pyFFTW}{PyFFTW}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{scipy} \PY{k+kn}{as} \PY{n+nn}{scp}
+        \PY{o}{\PYZpc{}}\PY{k}{pylab}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Using matplotlib backend: Qt4Agg
+Populating the interactive namespace from numpy and matplotlib
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{help}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{fft}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on package numpy.fft in numpy:
+
+NAME
+    numpy.fft
+
+FILE
+    /home/jpsilva/anaconda/lib/python2.7/site-packages/numpy/fft/\_\_init\_\_.py
+
+DESCRIPTION
+    Discrete Fourier Transform (:mod:`numpy.fft`)
+    =============================================
+    
+    .. currentmodule:: numpy.fft
+    
+    Standard FFTs
+    -------------
+    
+    .. autosummary::
+       :toctree: generated/
+    
+       fft       Discrete Fourier transform.
+       ifft      Inverse discrete Fourier transform.
+       fft2      Discrete Fourier transform in two dimensions.
+       ifft2     Inverse discrete Fourier transform in two dimensions.
+       fftn      Discrete Fourier transform in N-dimensions.
+       ifftn     Inverse discrete Fourier transform in N dimensions.
+    
+    Real FFTs
+    ---------
+    
+    .. autosummary::
+       :toctree: generated/
+    
+       rfft      Real discrete Fourier transform.
+       irfft     Inverse real discrete Fourier transform.
+       rfft2     Real discrete Fourier transform in two dimensions.
+       irfft2    Inverse real discrete Fourier transform in two dimensions.
+       rfftn     Real discrete Fourier transform in N dimensions.
+       irfftn    Inverse real discrete Fourier transform in N dimensions.
+    
+    Hermitian FFTs
+    --------------
+    
+    .. autosummary::
+       :toctree: generated/
+    
+       hfft      Hermitian discrete Fourier transform.
+       ihfft     Inverse Hermitian discrete Fourier transform.
+    
+    Helper routines
+    ---------------
+    
+    .. autosummary::
+       :toctree: generated/
+    
+       fftfreq   Discrete Fourier Transform sample frequencies.
+       rfftfreq  DFT sample frequencies (for usage with rfft, irfft).
+       fftshift  Shift zero-frequency component to center of spectrum.
+       ifftshift Inverse of fftshift.
+    
+    
+    Background information
+    ----------------------
+    
+    Fourier analysis is fundamentally a method for expressing a function as a
+    sum of periodic components, and for recovering the function from those
+    components.  When both the function and its Fourier transform are
+    replaced with discretized counterparts, it is called the discrete Fourier
+    transform (DFT).  The DFT has become a mainstay of numerical computing in
+    part because of a very fast algorithm for computing it, called the Fast
+    Fourier Transform (FFT), which was known to Gauss (1805) and was brought
+    to light in its current form by Cooley and Tukey [CT]\_.  Press et al. [NR]\_
+    provide an accessible introduction to Fourier analysis and its
+    applications.
+    
+    Because the discrete Fourier transform separates its input into
+    components that contribute at discrete frequencies, it has a great number
+    of applications in digital signal processing, e.g., for filtering, and in
+    this context the discretized input to the transform is customarily
+    referred to as a *signal*, which exists in the *time domain*.  The output
+    is called a *spectrum* or *transform* and exists in the *frequency
+    domain*.
+    
+    Implementation details
+    ----------------------
+    
+    There are many ways to define the DFT, varying in the sign of the
+    exponent, normalization, etc.  In this implementation, the DFT is defined
+    as
+    
+    .. math::
+       A\_k =  \textbackslash{}sum\_\{m=0\}\^{}\{n-1\} a\_m \textbackslash{}exp\textbackslash{}left\textbackslash{}\{-2\textbackslash{}pi i\{mk \textbackslash{}over n\}\textbackslash{}right\textbackslash{}\}
+       \textbackslash{}qquad k = 0,\textbackslash{}ldots,n-1.
+    
+    The DFT is in general defined for complex inputs and outputs, and a
+    single-frequency component at linear frequency :math:`f` is
+    represented by a complex exponential
+    :math:`a\_m = \textbackslash{}exp\textbackslash{}\{2\textbackslash{}pi i\textbackslash{},f m\textbackslash{}Delta t\textbackslash{}\}`, where :math:`\textbackslash{}Delta t`
+    is the sampling interval.
+    
+    The values in the result follow so-called "standard" order: If ``A =
+    fft(a, n)``, then ``A[0]`` contains the zero-frequency term (the mean of
+    the signal), which is always purely real for real inputs. Then ``A[1:n/2]``
+    contains the positive-frequency terms, and ``A[n/2+1:]`` contains the
+    negative-frequency terms, in order of decreasingly negative frequency.
+    For an even number of input points, ``A[n/2]`` represents both positive and
+    negative Nyquist frequency, and is also purely real for real input.  For
+    an odd number of input points, ``A[(n-1)/2]`` contains the largest positive
+    frequency, while ``A[(n+1)/2]`` contains the largest negative frequency.
+    The routine ``np.fft.fftfreq(n)`` returns an array giving the frequencies
+    of corresponding elements in the output.  The routine
+    ``np.fft.fftshift(A)`` shifts transforms and their frequencies to put the
+    zero-frequency components in the middle, and ``np.fft.ifftshift(A)`` undoes
+    that shift.
+    
+    When the input `a` is a time-domain signal and ``A = fft(a)``, ``np.abs(A)``
+    is its amplitude spectrum and ``np.abs(A)**2`` is its power spectrum.
+    The phase spectrum is obtained by ``np.angle(A)``.
+    
+    The inverse DFT is defined as
+    
+    .. math::
+       a\_m = \textbackslash{}frac\{1\}\{n\}\textbackslash{}sum\_\{k=0\}\^{}\{n-1\}A\_k\textbackslash{}exp\textbackslash{}left\textbackslash{}\{2\textbackslash{}pi i\{mk\textbackslash{}over n\}\textbackslash{}right\textbackslash{}\}
+       \textbackslash{}qquad m = 0,\textbackslash{}ldots,n-1.
+    
+    It differs from the forward transform by the sign of the exponential
+    argument and the normalization by :math:`1/n`.
+    
+    Real and Hermitian transforms
+    -----------------------------
+    
+    When the input is purely real, its transform is Hermitian, i.e., the
+    component at frequency :math:`f\_k` is the complex conjugate of the
+    component at frequency :math:`-f\_k`, which means that for real
+    inputs there is no information in the negative frequency components that
+    is not already available from the positive frequency components.
+    The family of `rfft` functions is
+    designed to operate on real inputs, and exploits this symmetry by
+    computing only the positive frequency components, up to and including the
+    Nyquist frequency.  Thus, ``n`` input points produce ``n/2+1`` complex
+    output points.  The inverses of this family assumes the same symmetry of
+    its input, and for an output of ``n`` points uses ``n/2+1`` input points.
+    
+    Correspondingly, when the spectrum is purely real, the signal is
+    Hermitian.  The `hfft` family of functions exploits this symmetry by
+    using ``n/2+1`` complex points in the input (time) domain for ``n`` real
+    points in the frequency domain.
+    
+    In higher dimensions, FFTs are used, e.g., for image analysis and
+    filtering.  The computational efficiency of the FFT means that it can
+    also be a faster way to compute large convolutions, using the property
+    that a convolution in the time domain is equivalent to a point-by-point
+    multiplication in the frequency domain.
+    
+    Higher dimensions
+    -----------------
+    
+    In two dimensions, the DFT is defined as
+    
+    .. math::
+       A\_\{kl\} =  \textbackslash{}sum\_\{m=0\}\^{}\{M-1\} \textbackslash{}sum\_\{n=0\}\^{}\{N-1\}
+       a\_\{mn\}\textbackslash{}exp\textbackslash{}left\textbackslash{}\{-2\textbackslash{}pi i \textbackslash{}left(\{mk\textbackslash{}over M\}+\{nl\textbackslash{}over N\}\textbackslash{}right)\textbackslash{}right\textbackslash{}\}
+       \textbackslash{}qquad k = 0, \textbackslash{}ldots, M-1;\textbackslash{}quad l = 0, \textbackslash{}ldots, N-1,
+    
+    which extends in the obvious way to higher dimensions, and the inverses
+    in higher dimensions also extend in the same way.
+    
+    References
+    ----------
+    
+    .. [CT] Cooley, James W., and John W. Tukey, 1965, "An algorithm for the
+            machine calculation of complex Fourier series," *Math. Comput.*
+            19: 297-301.
+    
+    .. [NR] Press, W., Teukolsky, S., Vetterline, W.T., and Flannery, B.P.,
+            2007, *Numerical Recipes: The Art of Scientific Computing*, ch.
+            12-13.  Cambridge Univ. Press, Cambridge, UK.
+    
+    Examples
+    --------
+    
+    For examples, see the various functions.
+
+PACKAGE CONTENTS
+    fftpack
+    fftpack\_lite
+    helper
+    info
+    setup
+
+DATA
+    absolute\_import = \_Feature((2, 5, 0, 'alpha', 1), (3, 0, 0, 'alpha', 0\ldots
+    division = \_Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192\ldots
+    print\_function = \_Feature((2, 6, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0)\ldots
+    using\_mklfft = True
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{help}\PY{p}{(}\PY{n}{scp}\PY{o}{.}\PY{n}{fft}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on function fft in module mklfft.fftpack:
+
+fft(a, n=None, axis=-1)
+    Compute the one-dimensional discrete Fourier Transform.
+    
+    This function computes the one-dimensional *n*-point discrete Fourier
+    Transform (DFT) with the efficient Fast Fourier Transform (FFT)
+    algorithm [CT].
+    
+    Parameters
+    ----------
+    a : array\_like
+        Input array, can be complex.
+    n : int, optional
+        Length of the transformed axis of the output.
+        If `n` is smaller than the length of the input, the input is cropped.
+        If it is larger, the input is padded with zeros.  If `n` is not given,
+        the length of the input along the axis specified by `axis` is used.
+    axis : int, optional
+        Axis over which to compute the FFT.  If not given, the last axis is
+        used.
+    
+    Returns
+    -------
+    out : complex ndarray
+        The truncated or zero-padded input, transformed along the axis
+        indicated by `axis`, or the last one if `axis` is not specified.
+    
+    Raises
+    ------
+    IndexError
+        if `axes` is larger than the last axis of `a`.
+    
+    See Also
+    --------
+    numpy.fft : for definition of the DFT and conventions used.
+    ifft : The inverse of `fft`.
+    fft2 : The two-dimensional FFT.
+    fftn : The *n*-dimensional FFT.
+    rfftn : The *n*-dimensional FFT of real input.
+    fftfreq : Frequency bins for given FFT parameters.
+    
+    Notes
+    -----
+    FFT (Fast Fourier Transform) refers to a way the discrete Fourier
+    Transform (DFT) can be calculated efficiently, by using symmetries in the
+    calculated terms.  The symmetry is highest when `n` is a power of 2, and
+    the transform is therefore most efficient for these sizes.
+    
+    The DFT is defined, with the conventions used in this implementation, in
+    the documentation for the `numpy.fft` module.
+    
+    References
+    ----------
+    .. [CT] Cooley, James W., and John W. Tukey, 1965, "An algorithm for the
+            machine calculation of complex Fourier series," *Math. Comput.*
+            19: 297-301.
+    
+    Examples
+    --------
+    >>> np.fft.fft(np.exp(2j * np.pi * np.arange(8) / 8))
+    array([ -3.44505240e-16 +1.14383329e-17j,
+             8.00000000e+00 -5.71092652e-15j,
+             2.33482938e-16 +1.22460635e-16j,
+             1.64863782e-15 +1.77635684e-15j,
+             9.95839695e-17 +2.33482938e-16j,
+             0.00000000e+00 +1.66837030e-15j,
+             1.14383329e-17 +1.22460635e-16j,
+             -1.64863782e-15 +1.77635684e-15j])
+    
+    >>> import matplotlib.pyplot as plt
+    >>> t = np.arange(256)
+    >>> sp = np.fft.fft(np.sin(t))
+    >>> freq = np.fft.fftfreq(t.shape[-1])
+    >>> plt.plot(freq, sp.real, freq, sp.imag)
+    [<matplotlib.lines.Line2D object at 0x\ldots>, <matplotlib.lines.Line2D object at 0x\ldots>]
+    >>> plt.show()
+    
+    In this example, real input has an FFT which is Hermitian, i.e., symmetric
+    in the real part and anti-symmetric in the imaginary part, as described in
+    the `numpy.fft` documentation.
+    \end{Verbatim}
+
+    Let's obtain the FFT of \[e^{\frac{i2\pi k}{8}}\] for $k=1,...,8$
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{np}\PY{o}{.}\PY{n}{fft}\PY{o}{.}\PY{n}{fft}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{l+m+mi}{2j} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} array([ -3.44505240e-16 +1.14383329e-17j,
+                  8.00000000e+00 -8.52057261e-16j,
+                  2.33482938e-16 +1.22460635e-16j,
+                  0.00000000e+00 +1.22460635e-16j,
+                  9.95839695e-17 +2.33482938e-16j,
+                 -8.88178420e-16 +1.17293449e-16j,
+                  1.14383329e-17 +1.22460635e-16j,   0.00000000e+00 +1.22460635e-16j])
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{x} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{l+m+mi}{2j} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{)} \PY{o}{/} \PY{l+m+mi}{8}\PY{p}{)}
+         \PY{n}{xt} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{fft}\PY{o}{.}\PY{n}{fft}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{plot}\PY{p}{(}\PY{n}{xt}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} [<matplotlib.lines.Line2D at 0x7f4897a5dc50>]
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+
+    \subsubsection{Optional}
+
+
+    \begin{itemize}
+\item
+  Install \href{http://www.fftw.org/download.html}{FFTW} sudo apt-get
+  install fftw3 libfftw3-dev
+\item
+  Install \href{https://pypi.python.org/pypi/pyFFTW}{PyFFTW} pip install
+  PyFFTW
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{pyfftw}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} \PY{n}{version\PYZus{}information}
+        \PY{o}{\PYZpc{}}\PY{k}{version\PYZus{}information} \PY{n}{numpy}\PY{p}{,}\PY{n}{scipy}\PY{p}{,}\PY{n}{pyfftw}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The version\_information extension is already loaded. To reload it, use:
+  \%reload\_ext version\_information
+    \end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}7}]:}
+    
+    \begin{tabular}{|l|l|}\hline
+{\bf Software} & {\bf Version} \\ \hline\hline
+Python & 2.7.8 |Anaconda 2.1.0 (64-bit)| (default, Aug 21 2014, 18:22:21) [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] \\ \hline
+IPython & 2.3.1 \\ \hline
+OS & posix [linux2] \\ \hline
+numpy & 1.9.1 \\ \hline
+scipy & 0.14.0 \\ \hline
+pyfftw & 0.9.2 \\ \hline
+\hline \multicolumn{2}{|l|}{Fri Dec 05 14:20:07 2014 CET} \\ \hline
+\end{tabular}
+
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.core.display} \PY{k+kn}{import} \PY{n}{HTML}
+        \PY{k}{def} \PY{n+nf}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{styles} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{./styles/custom.css}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{r}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+            \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{styles}\PY{p}{)}
+        \PY{n}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <IPython.core.display.HTML at 0x7fcfb8ffd550>
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

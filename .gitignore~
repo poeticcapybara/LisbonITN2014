@@ -50,6 +50,9 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Data
+data/
+
 # PyBuilder
 target/
 
@@ -60,3 +63,4 @@ target/
 *.xml
 *.gz
 *.tsv
+*.csv

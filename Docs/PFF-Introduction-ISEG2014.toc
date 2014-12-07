@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {0.1}\href {http://financialmathematics.pt/python2014/}{Workshop Python for Finance}}{2}{section.0.1}
+\contentsline {section}{\numberline {0.2}- an Introduction}{2}{section.0.2}
+\contentsline {subsubsection}{Date}{2}{section*.2}
+\contentsline {subsubsection}{Location:}{2}{section*.3}
+\contentsline {subsection}{\numberline {0.2.1}Brief description}{2}{subsection.0.2.1}
+\contentsline {subsection}{\numberline {0.2.2}Day1}{2}{subsection.0.2.2}
+\contentsline {subsection}{\numberline {0.2.3}Day2}{2}{subsection.0.2.3}
+\contentsline {chapter}{\numberline {1}More information}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}I.II-Iterables}{4}{section.1.1}
+\contentsline {subparagraph}{\textbf {List}}{4}{section*.4}
+\contentsline {subparagraph}{Tuples}{4}{section*.5}
+\contentsline {subparagraph}{Dicts}{5}{section*.6}
+\contentsline {subparagraph}{Strings}{5}{section*.7}
+\contentsline {subparagraph}{Files}{6}{section*.8}
+\contentsline {section}{\numberline {1.2}Generators}{6}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Yield}{7}{subsection.1.2.1}

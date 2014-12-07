@@ -1,0 +1,253 @@
+
+
+
+
+
+
+
+    
+    \section{\href{https://www.python.org/}{Python}}\label{python}
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[1]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{antigravity}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[1]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{this}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+
+    \subsection{\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{-1}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Installation checkup
+\end{enumerate}}
+
+
+    The easiest way to setup a working scientific python environment is
+through \href{http://continuum.io/downloads}{anaconda} from ContinuumIO.
+You should be able to download it from the following links directly:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \href{http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.1.0-Linux-x86_64.sh}{Linux
+  64-bit Python 2.7}
+  \href{http://docs.continuum.io/anaconda/install.html\#linux-install}{Installation
+  Instructions}
+\item
+  \href{http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.1.0-Linux-x86.sh}{Linux
+  32-bit Python 2.7}
+  \href{http://docs.continuum.io/anaconda/install.html\#linux-install}{Installation
+  Instructions}
+\item
+  \href{http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.1.0-Windows-x86_64.exe}{Windows
+  64-bit Python 2.7}
+  \href{http://docs.continuum.io/anaconda/install.html\#windows-install}{Installation
+  Instructions}
+\item
+  \href{http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.1.0-Windows-x86.exe}{Windows
+  32-bit Python 2.7}
+  \href{http://docs.continuum.io/anaconda/install.html\#windows-install}{Installation
+  Instructions}
+\item
+  \href{http://09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.1.0-MacOSX-x86_64.sh}{Mac
+  OS X 64-bit Python 2.7}
+  \href{http://docs.continuum.io/anaconda/install.html\#mac-install}{Installation
+  Instructions}
+\end{itemize}
+
+After installing run the following commands (Linux and Mac OS X):
+
+\begin{verbatim}
+conda update conda
+conda update numpy scipy matplotlib pandas ipython-notebook pip
+pip install seaborn
+\end{verbatim}
+
+    Run ipython and install the following extension by running
+
+\begin{verbatim}
+%install_ext http://raw.github.com/jrjohansson/version_information/master/version_information.py
+\end{verbatim}
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[2]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} \PY{n}{version\PYZus{}information}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[6]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{version\PYZus{}information} \PY{n}{numpy}\PY{p}{,}\PY{n}{scipy}\PY{p}{,}\PY{n}{matplotlib}\PY{p}{,}\PY{n}{pandas}\PY{p}{,}\PY{n}{seaborn}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[6]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    \begin{tabular}{|l|l|}\hline
+{\bf Software} & {\bf Version} \\ \hline\hline
+Python & 2.7.8 |Anaconda 2.1.0 (64-bit)| (default, Aug 21 2014, 18:22:21) [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] \\ \hline
+IPython & 2.3.0 \\ \hline
+OS & posix [linux2] \\ \hline
+numpy & 1.9.1 \\ \hline
+scipy & 0.14.0 \\ \hline
+matplotlib & 1.4.2 \\ \hline
+pandas & 0.15.0 \\ \hline
+seaborn & 0.3.1 \\ \hline
+\hline \multicolumn{2}{|l|}{Thu Dec 04 14:45:40 2014 CET} \\ \hline
+\end{tabular}
+
+
+    
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[2]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{IPython.core.display} \PY{k+kn}{import} \PY{n}{HTML}
+\PY{k}{def} \PY{n+nf}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{n}{styles} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{../styles/custom.css}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{r}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+    \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{styles}\PY{p}{)}
+\PY{n}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[2]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML at 0x7fe0c41c8410>
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%

@@ -1,0 +1,1369 @@
+
+
+
+
+
+
+
+    
+    \section{I.II-Iterables}\label{i.ii-iterables}
+
+    An iterable is a python container with two special methods:
+\textbf{iter} and \textbf{next}. There are some built-in iterables like
+lists, tuples, dicts, strings, files, etc\ldots{}
+
+As the name hints, an iterable allows iteration over its items, usually
+with a for statement:
+
+\begin{verbatim}
+for item in container:
+     print item    #or do sth else with item
+     
+\end{verbatim}
+
+Iterating is the process of accessing and returning each item from a
+container
+
+
+    \subparagraph{\textbf{List}}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[4]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{my\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}
+\PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{my\PYZus{}list}\PY{p}{:}
+    \PY{k}{print} \PY{n}{i}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+1
+2
+3
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[5]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZus{}\PYZus{}iter\PYZus{}\PYZus{}}\PY{l+s}{\PYZsq{}} \PY{o+ow}{in} \PY{n+nb}{dir}\PY{p}{(}\PY{n}{my\PYZus{}list}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[5]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+True
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[4]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{my\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{n}{j} \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{]}
+\PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{my\PYZus{}list}\PY{p}{:}
+    \PY{k}{print} \PY{n}{i}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+1
+2
+3
+4
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+
+    \subparagraph{Tuples}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[9]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{a} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}
+\PY{n}{a}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[9]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+(1, 2, 3)
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[11]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{a}\PY{p}{:}
+    \PY{k}{print} \PY{n}{item}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+1
+2
+3
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+
+    \subparagraph{Dicts}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[13]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{numpy.random} \PY{k+kn}{import} \PY{n}{randn}
+\PY{n}{a} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,}\PY{n}{randn}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[15]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{a}\PY{p}{:}
+    \PY{k}{print} \PY{n}{item}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+1
+2
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[18]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{a}\PY{o}{.}\PY{n}{iterkeys}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{k}{print} \PY{n}{item}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+1
+2
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[19]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{a}\PY{o}{.}\PY{n}{itervalues}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{k}{print} \PY{n}{item}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+-0.445128793029
+0.316719007573
+2.06412261427
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[21]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{a}\PY{o}{.}\PY{n}{iteritems}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{k}{print} \PY{n}{item}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+(0, -0.44512879302937886)
+(1, 0.31671900757330107)
+(2, 2.0641226142684475)
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[20]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{k}\PY{p}{,}\PY{n}{v} \PY{o+ow}{in} \PY{n}{a}\PY{o}{.}\PY{n}{iteritems}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{k}{print} \PY{n}{k}\PY{p}{,}\PY{n}{v}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+0 -0.445128793029
+1 0.316719007573
+2 2.06412261427
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+
+    \subparagraph{Strings}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[24]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{a} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{Python is awesome!}\PY{l+s}{\PYZsq{}}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[25]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{a}\PY{p}{:}
+    \PY{k}{print} \PY{n}{item}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+P
+y
+t
+h
+o
+n
+ 
+i
+s
+ 
+a
+w
+e
+s
+o
+m
+e
+!
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+
+    \subparagraph{Files}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[38]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{iter\PYZus{}text.txt}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{rb}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[39]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{f}\PY{p}{:}
+    \PY{k}{print} \PY{n}{item}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Line One
+
+Line Two
+
+Last line
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[44]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{f}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{k}{print} \PY{n}{item}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[45]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{iter\PYZus{}text.txt}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{rb}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{f}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{k}{print} \PY{n}{item}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Line One
+
+Line Two
+
+Last line
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    We have two \n for each line, one from the text and one from the print
+statement. A quick trick surpresses the one from print
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[46]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{f} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{iter\PYZus{}text.txt}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{rb}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{f}\PY{p}{:}
+    \PY{k}{print} \PY{n}{item}\PY{p}{,}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Line One
+Line Two
+Last line
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    \textbf{Note}: As long as possible, use \emph{with} (controlled
+execution) which closes the file for you. So instead of
+
+\begin{verbatim}
+f = open(filename,'r')
+do something with f
+f.close()
+\end{verbatim}
+
+you can write
+
+\begin{verbatim}
+with open(filename,'r') as f:
+    do something with f
+    
+\end{verbatim}
+
+where it automatically takes care of the clean-up for you
+
+
+    \section{Generators}
+
+
+    Generators are iterators which can only be iterated once and generate
+the values on the fly
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[52]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{my\PYZus{}generator} \PY{o}{=} \PY{p}{(}\PY{n}{j} \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+\PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{my\PYZus{}generator}\PY{p}{:}
+    \PY{k}{print} \PY{n}{i}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+1
+2
+3
+4
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[55]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{my\PYZus{}generator}\PY{o}{.}\PY{n}{next}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+    StopIteration                             Traceback (most recent call last)
+
+        <ipython-input-55-125f388bb61b> in <module>()
+    ----> 1 my\_generator.next()
+    
+
+        StopIteration: 
+
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+
+    \subsection{Yield}
+
+
+    \emph{yield} is the \emph{return} of generators. It outputs one value as
+the \emph{next()} method of the generator is called
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[6]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{createGenerator}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{n}{mylist} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{mylist}\PY{p}{:}
+        \PY{k}{yield} \PY{n}{i}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[7]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{mygenerator} \PY{o}{=} \PY{n}{createGenerator}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[8]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print}\PY{p}{(}\PY{n}{mygenerator}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+<generator object createGenerator at 0x7f2a5474fe60>
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[9]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{mygenerator}\PY{p}{:}
+    \PY{k}{print} \PY{n}{i}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+0
+1
+2
+3
+4
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[10]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{class} \PY{n+nc}{Bank}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{n}{crisis} \PY{o}{=} \PY{n+nb+bp}{False}
+    \PY{k}{def} \PY{n+nf}{create\PYZus{}atm}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+        \PY{k}{while} \PY{o+ow}{not} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{crisis}\PY{p}{:}
+            \PY{k}{yield} \PY{l+s}{\PYZsq{}}\PY{l+s}{100€}\PY{l+s}{\PYZsq{}}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[11]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{BES} \PY{o}{=} \PY{n}{Bank}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[12]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{Atm\PYZus{}Rossio} \PY{o}{=} \PY{n}{BES}\PY{o}{.}\PY{n}{create\PYZus{}atm}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[14]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print}\PY{p}{(}\PY{n}{Atm\PYZus{}Rossio}\PY{o}{.}\PY{n}{next}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+100€
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[15]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print}\PY{p}{(}\PY{n}{Atm\PYZus{}Rossio}\PY{o}{.}\PY{n}{next}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+100€
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[16]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{BES}\PY{o}{.}\PY{n}{crisis} \PY{o}{=} \PY{n+nb+bp}{True}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[18]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{Atm\PYZus{}Rossio}\PY{o}{.}\PY{n}{next}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+    StopIteration                             Traceback (most recent call last)
+
+        <ipython-input-18-658b8cbaec0d> in <module>()
+    ----> 1 Atm\_Rossio.next()
+    
+
+        StopIteration: 
+
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[19]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{BES}\PY{o}{.}\PY{n}{crisis} \PY{o}{=} \PY{n+nb+bp}{False}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[20]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print}\PY{p}{(}\PY{n}{Atm\PYZus{}Rossio}\PY{o}{.}\PY{n}{next}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+    StopIteration                             Traceback (most recent call last)
+
+        <ipython-input-20-6b8e2bf0f31f> in <module>()
+    ----> 1 print(Atm\_Rossio.next())
+    
+
+        StopIteration: 
+
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[21]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{Atm\PYZus{}NovoBanco} \PY{o}{=} \PY{n}{BES}\PY{o}{.}\PY{n}{create\PYZus{}atm}\PY{p}{(}\PY{p}{)}
+\PY{k}{print}\PY{p}{(}\PY{n}{Atm\PYZus{}NovoBanco}\PY{o}{.}\PY{n}{next}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+100€
+    \end{Verbatim}
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[3]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{IPython.core.display} \PY{k+kn}{import} \PY{n}{HTML}
+\PY{k}{def} \PY{n+nf}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{n}{styles} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{./styles/custom.css}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{r}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+    \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{styles}\PY{p}{)}
+\PY{n}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[3]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML at 0x7fa1d82598d0>
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+

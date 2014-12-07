@@ -1,0 +1,234 @@
+
+
+
+
+
+
+
+    
+    \section{\href{http://financialmathematics.pt/python2014/}{Workshop
+Python for Finance}}\label{workshop-python-for-finance}
+
+\section{- an Introduction}\label{an-introduction}
+
+\emph{José Pedro Silva}
+\href{http://www-num.math.uni-wuppertal.de/en/amna/people/jose-pedro-silva.html}{1}
+- silva@math.uni-wuppertal.de
+
+\subsubsection{Date}\label{date}
+
+9-11 Dec 2014
+
+\subsubsection{Location:}\label{location}
+
+ISEG Rua do Quelhas, 6 1200-781 Lisboa, PORTUGAL
+
+    \subsection{Brief description}\label{brief-description}
+
+This workshop is aimed at users with few or no proficiency in Python who
+want to apply numerical methods in Finance. A short introduction to the
+language and its syntax will be given, as well as a brief description of
+the most important modules (NumPy, SciPy, Matplotlib, Pandas, IPython)
+for scientific and financial analysis purposes. The workshop will
+consist of interactive lectures with several examples followed by
+practical sessions.
+
+    \begin{itemize}
+\item
+  \subsection{Day1}\label{day1}
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    \href{I-Python.ipynb}{Python}
+  \item
+    \href{II-IPython.ipynb}{IPython}
+  \item
+    \href{III-Numpy.ipynb}{Numpy}
+  \item
+    \href{V-Matplotlib.ipynb}{Matplotlib}
+  \end{itemize}
+\item
+  \subsection{Day2}\label{day2}
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    \href{IV-SciPy.ipynb}{SciPy}
+  \item
+    \href{VI-Pandas.ipynb}{Pandas}
+  \item
+    \href{VII-Tips-and-Tricks.ipynb}{Tips and Tricks}
+  \item
+    \href{VIII-Benchmarks.ipynb}{Benchmarks}
+  \item
+    \href{IX-Randomness.ipynb}{Randomness}
+  \item
+    \href{X-FFT.ipynb}{FFT}
+  \item
+    \href{XI-OptionPricing.ipynb}{Option Pricing}
+  \end{itemize}
+\end{itemize}
+
+
+    \chapter{More information}
+
+
+    \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \href{http://forpythonquants.com/}{For Python Quants Conference}
+\item
+  \href{http://www.quantopian.com}{Quantopian}
+\item
+  \href{https://store.continuum.io/cshop/python-for-finance/}{ContinuumIO
+  Python for Finance course}
+\end{itemize}
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[1]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} \PY{n}{version\PYZus{}information}
+\PY{o}{\PYZpc{}}\PY{k}{version\PYZus{}information} \PY{n}{numpy}\PY{p}{,} \PY{n}{matplotlib}\PY{p}{,} \PY{n}{scipy}\PY{p}{,} \PY{n}{pandas}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[1]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    \begin{tabular}{|l|l|}\hline
+{\bf Software} & {\bf Version} \\ \hline\hline
+Python & 2.7.8 |Anaconda 2.1.0 (64-bit)| (default, Aug 21 2014, 18:22:21) [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] \\ \hline
+IPython & 2.3.1 \\ \hline
+OS & posix [linux2] \\ \hline
+numpy & 1.9.1 \\ \hline
+matplotlib & 1.4.2 \\ \hline
+scipy & 0.14.0 \\ \hline
+pandas & 0.15.1 \\ \hline
+\hline \multicolumn{2}{|l|}{Fri Dec 05 10:35:46 2014 CET} \\ \hline
+\end{tabular}
+
+
+    
+}%
+    \end{addmargin}%
+    \emph{All notebooks will be available from the official ITN-Strike
+repository soon}
+
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[2]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{IPython.core.display} \PY{k+kn}{import} \PY{n}{HTML}
+\PY{k}{def} \PY{n+nf}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+    \PY{n}{styles} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{./styles/custom.css}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{r}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+    \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{styles}\PY{p}{)}
+\PY{n}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+\par\vspace{1\smallerfontscale}%
+    \needspace{4\baselineskip}%
+    % Only render the prompt if the cell is pyout.  Note, the outputs prompt 
+    % block isn't used since we need to check each indiviual output and only
+    % add prompts to the pyout ones.
+    
+        {\par%
+        \vspace{-1\smallerfontscale}%
+        \noindent%
+        \begin{minipage}{\cellleftmargin}%
+    \hfill%
+    {\smaller%
+    \tt%
+    \color{nbframe-out-prompt}%
+    Out[2]:}%
+    \hspace{\inputpadding}%
+    \hspace{0em}%
+    \hspace{3pt}%
+    \end{minipage}%%
+        }%
+    %
+    %
+    \begin{addmargin}[\cellleftmargin]{0em}% left, right
+    {\smaller%
+    \vspace{-1\smallerfontscale}%
+    
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML at 0x7f2fa3d8abd0>
+    \end{verbatim}
+
+    
+}%
+    \end{addmargin}%
+    % Add contents below.
+
+{\par%
+\vspace{-1\baselineskip}%
+\needspace{4\baselineskip}}%
+\begin{notebookcell}[]%
+\begin{addmargin}[\cellleftmargin]{0em}% left, right
+{\smaller%
+\par%
+%
+\vspace{-1\smallerfontscale}%
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+%
+\par%
+\vspace{-1\smallerfontscale}}%
+\end{addmargin}
+\end{notebookcell}
+
+

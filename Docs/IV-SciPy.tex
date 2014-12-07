@@ -1,0 +1,801 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{IV-SciPy}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{IV-\href{http://www.scipy.org/}{SciPy} - Scientific
+Python}\label{iv-scipy---scientific-python}
+
+    \subsubsection{Index}\label{index}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \hyperref[quadrature]{Quadrature}
+\item
+  \hyperref[ode]{ODE Integrate}
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    \hyperref[]{Way 1}
+  \item
+    \hyperref[]{Way 2}
+  \end{itemize}
+\item
+  \hyperref[linearalgebra]{Linear Algebra}
+\item
+  \hyperref[optimize]{Optimize}
+\item
+  \hyperref[]{}
+\item
+  \hyperref[]{}
+\item
+  \hyperref[]{}
+\end{itemize}
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.display} \PY{k+kn}{import} \PY{n}{Image}\PY{p}{,} \PY{n}{YouTubeVideo}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{scipy} \PY{k+kn}{as} \PY{n+nn}{scp}
+        \PY{o}{\PYZpc{}}\PY{k}{pylab}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Using matplotlib backend: Qt4Agg
+Populating the interactive namespace from numpy and matplotlib
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c}{\PYZsh{} help(scp)}
+\end{Verbatim}
+
+
+    \subsubsection{Integrate}
+
+
+    Although not completely unrelated, scipy.integrate contains the
+functions for quadrature and for ode integration.
+
+
+    \subparagraph{Quadrature}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k+kn}{from}  \PY{n+nn}{scipy} \PY{k+kn}{import} \PY{n}{integrate}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n+nb}{dir}\PY{p}{(}\PY{n}{integrate}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} ['IntegrationWarning',
+          'Tester',
+          '\_\_all\_\_',
+          '\_\_builtins\_\_',
+          '\_\_doc\_\_',
+          '\_\_file\_\_',
+          '\_\_name\_\_',
+          '\_\_package\_\_',
+          '\_\_path\_\_',
+          '\_dop',
+          '\_ode',
+          '\_odepack',
+          '\_quadpack',
+          'absolute\_import',
+          'complex\_ode',
+          'cumtrapz',
+          'dblquad',
+          'division',
+          'fixed\_quad',
+          'lsoda',
+          'newton\_cotes',
+          'nquad',
+          'ode',
+          'odeint',
+          'odepack',
+          'print\_function',
+          'quad',
+          'quad\_explain',
+          'quadpack',
+          'quadrature',
+          'romb',
+          'romberg',
+          's',
+          'simps',
+          'test',
+          'tplquad',
+          'trapz',
+          'vode']
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{k+kn}{from} \PY{n+nn}{scipy.integrate} \PY{k+kn}{import} \PY{o}{*}
+\end{Verbatim}
+
+    Let's calculate an integral of the following type
+
+    \[\int ^a_b f(x)dx \]
+
+    We start by a simple example, \textbf{$f(x)=x^2$}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{k}{def} \PY{n+nf}{f}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+\end{Verbatim}
+
+    We define $a$ and $b$
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{a}\PY{p}{,} \PY{n}{b} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{quad}\PY{p}{(}\PY{n}{f}\PY{p}{,}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} (0.6666666666666666, 7.401486830834376e-15)
+\end{Verbatim}
+        
+    Trapezoidal Rule
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{Image}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{http://upload.wikimedia.org/wikipedia/commons/4/42/Composite\PYZus{}trapezoidal\PYZus{}rule\PYZus{}illustration.png}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}20}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{IV-SciPy_files/IV-SciPy_20_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{x} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{)}
+         \PY{n}{y} \PY{o}{=} \PY{n}{f}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+         \PY{n}{trapz}\PY{p}{(}\PY{n}{y}\PY{p}{,}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}21}]:} 0.66680270720674772
+\end{Verbatim}
+        
+    We can check convergence of Trapezoidal Rule easily
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}
+         
+         \PY{n}{trap\PYZus{}res} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+         \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n}{N}\PY{p}{:}
+             \PY{n}{x} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{n}\PY{p}{)}
+             \PY{n}{y} \PY{o}{=} \PY{n}{f}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+             \PY{n}{trap\PYZus{}res}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{trapz}\PY{p}{(}\PY{n}{y}\PY{p}{,}\PY{n}{x}\PY{p}{)}\PY{p}{)}
+         \PY{n}{err\PYZus{}trap} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{l+m+mf}{2.}\PY{o}{/}\PY{l+m+mi}{3}\PY{o}{\PYZhy{}}\PY{n}{asarray}\PY{p}{(}\PY{n}{trap\PYZus{}res}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{N}\PY{p}{,}\PY{n}{err\PYZus{}trap}\PY{p}{)}
+         \PY{n}{semilogy}\PY{p}{(}\PY{p}{)}
+         \PY{n}{semilogx}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:} []
+\end{Verbatim}
+        
+    Simpson's Rule
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}
+         
+         \PY{n}{simps\PYZus{}res} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+         \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n}{N}\PY{p}{:}
+             \PY{n}{x} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{n}\PY{p}{)}
+             \PY{n}{y} \PY{o}{=} \PY{n}{f}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+             \PY{n}{simps\PYZus{}res}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{simps}\PY{p}{(}\PY{n}{y}\PY{p}{,}\PY{n}{x}\PY{p}{)}\PY{p}{)}
+         \PY{n}{err\PYZus{}simps} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{l+m+mf}{2.}\PY{o}{/}\PY{l+m+mi}{3}\PY{o}{\PYZhy{}}\PY{n}{asarray}\PY{p}{(}\PY{n}{simps\PYZus{}res}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{N}\PY{p}{,}\PY{n}{err\PYZus{}simps}\PY{p}{)}
+         \PY{n}{semilogy}\PY{p}{(}\PY{p}{)}
+         \PY{n}{semilogx}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}23}]:} []
+\end{Verbatim}
+        
+    Romb Integration
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{romb\PYZus{}res} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+         \PY{n}{Nromb} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{o}{*}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}
+         \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n}{Nromb}\PY{p}{:}
+             \PY{n}{x}\PY{p}{,} \PY{n}{dx} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{n}\PY{p}{,}\PY{n}{retstep}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+             \PY{n}{y} \PY{o}{=} \PY{n}{f}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+             \PY{n}{romb\PYZus{}res}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{romb}\PY{p}{(}\PY{n}{y}\PY{p}{,}\PY{n}{dx}\PY{p}{)}\PY{p}{)}
+         \PY{n}{err\PYZus{}romb} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{l+m+mf}{2.}\PY{o}{/}\PY{l+m+mi}{3}\PY{o}{\PYZhy{}}\PY{n}{array}\PY{p}{(}\PY{n}{romb\PYZus{}res}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plot}\PY{p}{(}\PY{n}{Nromb}\PY{p}{,}\PY{n}{err\PYZus{}romb}\PY{p}{)}
+         \PY{n}{semilogy}\PY{p}{(}\PY{p}{)}
+         \PY{n}{semilogx}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}24}]:} []
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{plot}\PY{p}{(}\PY{n}{N}\PY{p}{,}\PY{n}{err\PYZus{}trap}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{r}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{N}\PY{p}{,}\PY{n}{err\PYZus{}simps}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{b}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{Nromb}\PY{p}{,}\PY{n}{err\PYZus{}romb}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{g}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{semilogy}\PY{p}{(}\PY{p}{)}
+         \PY{n}{semilogx}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}25}]:} []
+\end{Verbatim}
+        
+    Indefinite intervals are also possible
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{quad}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{x} \PY{o}{*}\PY{o}{*} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{Inf}\PY{p}{,} \PY{n}{Inf}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}26}]:} (1.7724538509055159, 1.4202636780944923e-08)
+\end{Verbatim}
+        
+    Double integral
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{k}{def} \PY{n+nf}{integrand}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{\PYZhy{}}\PY{n}{y}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}
+         
+         \PY{n}{x\PYZus{}lower} \PY{o}{=} \PY{l+m+mi}{0}  
+         \PY{n}{x\PYZus{}upper} \PY{o}{=} \PY{l+m+mi}{10}
+         \PY{n}{y\PYZus{}lower} \PY{o}{=} \PY{l+m+mi}{0}
+         \PY{n}{y\PYZus{}upper} \PY{o}{=} \PY{l+m+mi}{10}
+         
+         \PY{n}{dblquad}\PY{p}{(}\PY{n}{integrand}\PY{p}{,} \PY{n}{x\PYZus{}lower}\PY{p}{,} \PY{n}{x\PYZus{}upper}\PY{p}{,} \PY{k}{lambda} \PY{n}{x} \PY{p}{:} \PY{n}{y\PYZus{}lower}\PY{p}{,} \PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{y\PYZus{}upper}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}27}]:} (0.7853981633974476, 1.638229942140971e-13)
+\end{Verbatim}
+        
+    Triple Integral
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{k}{def} \PY{n+nf}{integrand}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{,}\PY{n}{z}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{\PYZhy{}}\PY{n}{y}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{\PYZhy{}}\PY{n}{z}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}
+         
+         \PY{n}{x\PYZus{}lower} \PY{o}{=} \PY{l+m+mi}{0}  
+         \PY{n}{x\PYZus{}upper} \PY{o}{=} \PY{l+m+mi}{10}
+         \PY{n}{y\PYZus{}lower} \PY{o}{=} \PY{l+m+mi}{0}
+         \PY{n}{y\PYZus{}upper} \PY{o}{=} \PY{l+m+mi}{10}
+         \PY{n}{z\PYZus{}lower} \PY{o}{=} \PY{l+m+mi}{0}
+         \PY{n}{z\PYZus{}upper} \PY{o}{=} \PY{l+m+mi}{10}
+         
+         \PY{n}{tplquad}\PY{p}{(}\PY{n}{integrand}\PY{p}{,} \PY{n}{x\PYZus{}lower}\PY{p}{,} \PY{n}{x\PYZus{}upper}\PY{p}{,} \PY{k}{lambda} \PY{n}{x} \PY{p}{:} \PY{n}{y\PYZus{}lower}\PY{p}{,} \PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{y\PYZus{}upper}\PY{p}{,}\PYZbs{}
+                 \PY{k}{lambda} \PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{:} \PY{n}{z\PYZus{}lower}\PY{p}{,} \PY{k}{lambda} \PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{:} \PY{n}{z\PYZus{}upper}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:} (0.6960409996039545, 1.4506309421028255e-13)
+\end{Verbatim}
+        
+    Exercise
+
+    \subsection{Numerical Integration}\label{numerical-integration}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{import} \PY{n+nn}{scipy} \PY{k+kn}{as} \PY{n+nn}{scp}
+        \PY{k+kn}{from} \PY{n+nn}{pylab} \PY{k+kn}{import} \PY{o}{*}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib}
+        \PY{k+kn}{from} \PY{n+nn}{scipy.integrate} \PY{k+kn}{import} \PY{n}{odeint}\PY{p}{,} \PY{n}{ode}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Using matplotlib backend: Qt4Agg
+    \end{Verbatim}
+
+    
+
+
+    \paragraph{Way 1}
+
+
+    The first way is to use \emph{odeint}. scipy.integrate.odeint is a
+wrapper to LSODA (Fortran Library). It chooses which solver to use
+depending on the stiffness of the problem. Using the docstring of
+odeint, we obtain the following information:
+
+    \begin{verbatim}
+Parameters
+----------
+func : callable(y, t0, ...)
+    Computes the derivative of y at t0.
+y0 : array
+    Initial condition on y (can be a vector).
+t : array
+    A sequence of time points for which to solve for y.  The initial
+    value point should be the first element of this sequence.
+args : tuple, optional
+    Extra arguments to pass to function.
+Dfun : callable(y, t0, ...)
+    Gradient (Jacobian) of `func`.
+col_deriv : bool, optional
+    True if `Dfun` defines derivatives down columns (faster),
+    otherwise `Dfun` should define derivatives across rows.
+full_output : bool, optional
+    True if to return a dictionary of optional outputs as the second output
+printmessg : bool, optional
+    Whether to print the convergence message
+
+Returns
+-------
+y : array, shape (len(t), len(y0))
+    Array containing the value of y for each desired time in t,
+    with the initial value `y0` in the first row.
+infodict : dict, only returned if full_output == True
+\end{verbatim}
+
+    Let us try and solve the equations of motion of a simple pendulum
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{g} \PY{o}{=} \PY{l+m+mf}{9.8}
+         \PY{n}{L} \PY{o}{=} \PY{l+m+mf}{0.5}
+         \PY{n}{m} \PY{o}{=} \PY{l+m+mf}{0.1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{k}{def} \PY{n+nf}{f}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{n}{g}\PY{p}{,} \PY{n}{l}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}RHS of pendulum\PYZsq{}\PYZsq{}\PYZsq{}}
+             \PY{n}{x1}\PY{p}{,} \PY{n}{x2} \PY{o}{=} \PY{n}{x}
+             \PY{n}{dx1} \PY{o}{=} \PY{n}{x2}
+             \PY{n}{dx2} \PY{o}{=} \PY{o}{\PYZhy{}} \PY{n}{g}\PY{o}{/}\PY{n}{l}\PY{o}{*}\PY{n}{sin}\PY{p}{(}\PY{n}{x1}\PY{p}{)}
+             
+             \PY{k}{return} \PY{p}{[}\PY{n}{dx1}\PY{p}{,} \PY{n}{dx2}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{n}{x0} \PY{o}{=} \PY{p}{[}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}
+         \PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{250}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{n}{x} \PY{o}{=} \PY{n}{odeint}\PY{p}{(}\PY{n}{f}\PY{p}{,} \PY{n}{x0}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{p}{(}\PY{n}{g}\PY{p}{,}\PY{n}{L}\PY{p}{,}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{t}\PY{p}{,} \PY{n}{x}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{r}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{theta1}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{x1} \PY{o}{=} \PY{o}{+} \PY{n}{L}\PY{o}{*}\PY{n}{sin}\PY{p}{(}\PY{n}{x}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         \PY{n}{y1} \PY{o}{=} \PY{o}{\PYZhy{}} \PY{n}{L}\PY{o}{*}\PY{n}{cos}\PY{p}{(}\PY{n}{x}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x1}\PY{p}{,}\PY{n}{y1}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{b}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}45}]:} [<matplotlib.lines.Line2D at 0x7fcf5ecd3d10>]
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{k+kn}{from} \PY{n+nn}{matplotlib.widgets} \PY{k+kn}{import} \PY{n}{Slider}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}73}]:} \PY{n}{axanim} \PY{o}{=} \PY{n}{axes}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.25}\PY{p}{,} \PY{l+m+mf}{0.8}\PY{p}{,} \PY{l+m+mf}{0.6}\PY{p}{]}\PY{p}{)}
+         \PY{n}{pl}\PY{p}{,} \PY{o}{=} \PY{n}{axanim}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{x1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{y1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{k}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{pl2}\PY{p}{,} \PY{o}{=} \PY{n}{plot}\PY{p}{(}\PY{n}{x1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{y1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{bo}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{pl3}\PY{p}{,} \PY{o}{=} \PY{n}{plot}\PY{p}{(}\PY{n}{x1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{y1}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{r}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{)}
+         \PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{1.5}\PY{o}{*}\PY{n}{L}\PY{p}{,} \PY{l+m+mf}{1.5}\PY{o}{*}\PY{n}{L}\PY{p}{]}\PY{p}{)}
+         \PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{1.5}\PY{o}{*}\PY{n}{L}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         
+         \PY{n}{axsl} \PY{o}{=} \PY{n}{axes}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.8}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{]}\PY{p}{)}
+         \PY{n}{sl} \PY{o}{=} \PY{n}{Slider}\PY{p}{(}\PY{n}{axsl}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{t}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{t}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{,}\PY{n}{valinit}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{valfmt}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s}{ s}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{k}{def} \PY{n+nf}{update}\PY{p}{(}\PY{n}{data}\PY{p}{)}\PY{p}{:}
+             \PY{n}{it} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{t}\PY{o}{\PYZhy{}}\PY{n}{data}\PY{p}{)}\PY{o}{.}\PY{n}{argmin}\PY{p}{(}\PY{p}{)}
+             \PY{n}{pl}\PY{o}{.}\PY{n}{set\PYZus{}data}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{x1}\PY{p}{[}\PY{n}{it}\PY{p}{]}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{y1}\PY{p}{[}\PY{n}{it}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+             \PY{n}{pl2}\PY{o}{.}\PY{n}{set\PYZus{}data}\PY{p}{(}\PY{n}{x1}\PY{p}{[}\PY{n}{it}\PY{p}{]}\PY{p}{,}\PY{n}{y1}\PY{p}{[}\PY{n}{it}\PY{p}{]}\PY{p}{)}
+             \PY{n}{pl3}\PY{o}{.}\PY{n}{set\PYZus{}data}\PY{p}{(}\PY{n}{x1}\PY{p}{[}\PY{p}{:}\PY{n}{it}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{n}{y1}\PY{p}{[}\PY{p}{:}\PY{n}{it}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+             \PY{n}{draw}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n}{sl}\PY{o}{.}\PY{n}{on\PYZus{}changed}\PY{p}{(}\PY{n}{update}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}73}]:} 0
+\end{Verbatim}
+        
+    
+
+
+    \paragraph{Way 2}
+
+
+    Another possibility is to use the ode package. They differ in the
+control they give the user. Let's run the simple pendulum example.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{g} \PY{o}{=} \PY{l+m+mf}{9.8}
+         \PY{n}{L} \PY{o}{=} \PY{l+m+mf}{0.5}
+         \PY{n}{m} \PY{o}{=} \PY{l+m+mf}{0.1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{k}{def} \PY{n+nf}{f}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{n}{g}\PY{p}{,} \PY{n}{l}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}RHS of pendulum\PYZsq{}\PYZsq{}\PYZsq{}}
+             \PY{n}{x1}\PY{p}{,} \PY{n}{x2} \PY{o}{=} \PY{n}{x}
+             \PY{n}{dx1} \PY{o}{=} \PY{n}{x2}
+             \PY{n}{dx2} \PY{o}{=} \PY{o}{\PYZhy{}} \PY{n}{g}\PY{o}{/}\PY{n}{l}\PY{o}{*}\PY{n}{sin}\PY{p}{(}\PY{n}{x1}\PY{p}{)}
+             
+             \PY{k}{return} \PY{p}{[}\PY{n}{dx1}\PY{p}{,} \PY{n}{dx2}\PY{p}{]}
+         
+         \PY{n}{x0} \PY{o}{=} \PY{p}{[}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}
+         \PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{250}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{solver} \PY{o}{=} \PY{n}{ode}\PY{p}{(}\PY{n}{f}\PY{p}{)}
+         \PY{n}{solver}\PY{o}{.}\PY{n}{set\PYZus{}f\PYZus{}params}\PY{p}{(}\PY{n}{g}\PY{p}{,}\PY{n}{L}\PY{p}{)}
+         \PY{n}{solver}\PY{o}{.}\PY{n}{set\PYZus{}initial\PYZus{}value}\PY{p}{(}\PY{n}{x0}\PY{p}{,}\PY{n}{t}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}27}]:} <scipy.integrate.\_ode.ode at 0x7f30221c6990>
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{dt} \PY{o}{=} \PY{n}{diff}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{k}{while} \PY{n}{solver}\PY{o}{.}\PY{n}{successful}\PY{p}{(}\PY{p}{)} \PY{o+ow}{and} \PY{n}{solver}\PY{o}{.}\PY{n}{t} \PY{o}{\PYZlt{}} \PY{n}{t}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
+             \PY{n}{solver}\PY{o}{.}\PY{n}{integrate}\PY{p}{(}\PY{n}{solver}\PY{o}{.}\PY{n}{t}\PY{o}{+}\PY{n}{dt}\PY{p}{)}
+             \PY{k}{print} \PY{p}{(}\PY{n}{solver}\PY{o}{.}\PY{n}{t}\PY{p}{,} \PY{n}{solver}\PY{o}{.}\PY{n}{y}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+
+        <ipython-input-28-5598cddd42a8> in <module>()
+          1 dt = diff(t)[0]
+          2 while solver.successful() and solver.t < t[-1]:
+    ----> 3     solver.integrate(solver.t+dt)
+          4     print (solver.t, solver.y)
+
+
+        /home/jpsilva/anaconda/lib/python2.7/site-packages/scipy/integrate/\_ode.pyc in integrate(self, t, step, relax)
+        386             self.\_y, self.t = mth(self.f, self.jac or (lambda: None),
+        387                                 self.\_y, self.t, t,
+    --> 388                                 self.f\_params, self.jac\_params)
+        389         except SystemError:
+        390             \# f2py issue with tuple returns, see ticket 1187.
+
+
+        /home/jpsilva/anaconda/lib/python2.7/site-packages/scipy/integrate/\_ode.pyc in run(self, *args)
+        735             self.acquire\_new\_handle()
+        736         y1, t, istate = self.runner(*(args[:5] + tuple(self.call\_args) +
+    --> 737                                       args[5:]))
+        738         if istate < 0:
+        739             warnings.warn('vode: ' +
+
+
+        <ipython-input-26-e141f1e3624a> in f(x, t, g, l)
+          1 def f(x, t, g, l):
+          2     '''RHS of pendulum'''
+    ----> 3     x1, x2 = x
+          4     dx1 = x2
+          5     dx2 = - g/l*sin(x1)
+
+
+        TypeError: 'float' object is not iterable
+
+    \end{Verbatim}
+
+    The reason for this error is the arguments' order convention. Unline
+odeint which asks for a callable f(x,t\ldots{}), ode calls for
+f(t,x,\ldots{}). We can either define a new function or use a lambda
+function to solve this
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{solver} \PY{o}{=} \PY{n}{ode}\PY{p}{(}\PY{k}{lambda} \PY{n}{t}\PY{p}{,} \PY{n}{x}\PY{p}{:} \PY{n}{f}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{t}\PY{p}{,}\PY{n}{g}\PY{p}{,}\PY{n}{L}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{set\PYZus{}initial\PYZus{}value}\PY{p}{(}\PY{n}{x0}\PY{p}{,}\PY{n}{t}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} 
+         \PY{c}{\PYZsh{} Note that we eliminated the need for extra arguments}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{n}{dt} \PY{o}{=} \PY{n}{diff}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{k}{while} \PY{n}{solver}\PY{o}{.}\PY{n}{successful}\PY{p}{(}\PY{p}{)} \PY{o+ow}{and} \PY{n}{solver}\PY{o}{.}\PY{n}{t} \PY{o}{\PYZlt{}} \PY{n}{t}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
+             \PY{n}{solver}\PY{o}{.}\PY{n}{integrate}\PY{p}{(}\PY{n}{solver}\PY{o}{.}\PY{n}{t}\PY{o}{+}\PY{n}{dt}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{solver}\PY{o}{.}\PY{n}{y}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}32}]:} array([ 0.25731756,  3.19230143])
+\end{Verbatim}
+        
+    If we want to store the solution for all time steps, we have to
+explicitly store it
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    
+
+
+    \\*\textit{Version Information}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} \PY{n}{version\PYZus{}information}
+         \PY{o}{\PYZpc{}}\PY{k}{version\PYZus{}information} \PY{n}{scipy}\PY{p}{,} \PY{n}{matplotlib}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}11}]:}
+    
+    \begin{tabular}{|l|l|}\hline
+{\bf Software} & {\bf Version} \\ \hline\hline
+Python & 2.7.8 |Anaconda 2.1.0 (64-bit)| (default, Aug 21 2014, 18:22:21) [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] \\ \hline
+IPython & 2.3.1 \\ \hline
+OS & posix [linux2] \\ \hline
+scipy & 0.14.0 \\ \hline
+matplotlib & 1.4.2 \\ \hline
+\hline \multicolumn{2}{|l|}{Fri Dec 05 10:14:13 2014 CET} \\ \hline
+\end{tabular}
+
+
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.core.display} \PY{k+kn}{import} \PY{n}{HTML}
+        \PY{k}{def} \PY{n+nf}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{styles} \PY{o}{=} \PY{n+nb}{open}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{./styles/custom.css}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{r}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}
+            \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{styles}\PY{p}{)}
+        \PY{n}{css\PYZus{}styling}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}1}]:} <IPython.core.display.HTML at 0x7f345c671850>
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
