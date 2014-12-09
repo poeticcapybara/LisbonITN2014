@@ -1,3 +1,3 @@
 #!/usr/bin/env python
 
-print("Bergische Universitat Wuppertal!")
+print("Instituto Superior de Economia e Gestao!")
