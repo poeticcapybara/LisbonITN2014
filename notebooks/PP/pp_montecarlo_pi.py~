@@ -1,0 +1,39 @@
+import sys
+import math
+import random
+import time
+import pp
+
+def MC_Pi(n):
+	counter = 0
+	for i in range(n):
+		if math.pow(random.random(), 2.0) + math.pow(random.random(), 2.0) <= 1.0:
+			counter += 1
+	return counter
+
+if len(sys.argv) > 1:
+	ncpus = int(sys.argv[1])
+	# Creates jobserver with ncpus workers
+	job_server = pp.Server(ncpus)
+else:
+	# Creates jobserver with automatically detected number of workers
+	job_server = pp.Server()
+	ncpus = job_server.get_ncpus()
+
+print "Starting pp with", ncpus, "workers"
+
+n = 1000000
+
+start_time = time.time()
+
+ln = n/ncpus
+
+jobs = [job_server.submit(MC_Pi, (ln,),modules = ("math",)) for i in range(ncpus)]
+
+ctr = 0
+for job in jobs:
+	ctr += job()
+
+print "PI = ", 4.0*ctr/n
+
+print "Time elapsed: ", time.time() - start_time, "s"

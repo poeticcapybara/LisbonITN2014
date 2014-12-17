@@ -3,7 +3,7 @@ Example of a python module. Contains a variable called my_variable,
 a function called my_function, and a class called MyClass.
 """
 
-my_variable = 0
+my_variable = 1
 
 def my_function():
     """
